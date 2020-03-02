@@ -1,0 +1,9 @@
+name: UOSC
+bio: |
+  We can post short announcements here!
+avatar: ./avatars/uosc.png
+social:
+  - url: https://unsplash.com
+  - url: https://stackoverflow.com
+  - url: https://github.com
+featured: true

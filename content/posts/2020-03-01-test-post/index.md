@@ -1,6 +1,6 @@
 ---
-title: My first post using Novela by Narative
-author: UOSC
+title: This is a Test Title
+author: Yong Lin Wang, UOSC
 date: 2019-04-30
 hero: ./images/hero.jpg
 excerpt: With the growing community interest in Gatsby, we hope to create more resources that make it easier for anyone to grasp the power of this incredible tool.
