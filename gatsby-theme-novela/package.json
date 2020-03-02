@@ -1,22 +1,41 @@
 {
-  "private": true,
-  "name": "site",
-  "version": "1.0.0",
+  "name": "@narative/gatsby-theme-novela",
+  "author": "dennis@narative.co",
+  "repository": "https://github.com/narative/gatsby-theme-novela",
+  "version": "0.13.1",
+  "main": "index.js",
   "license": "MIT",
+  "keywords": [
+    "narative",
+    "gatsby",
+    "gatsby-plugin",
+    "gatsby-theme",
+    "gatsby-theme-novela",
+    "blog",
+    "medium",
+    "articles",
+    "react"
+  ],
   "scripts": {
     "build": "gatsby build",
-    "dev": "gatsby develop",
     "clean": "gatsby clean",
-    "proxy": "netlify-cms-proxy-server"
+    "contentful:export": "contentful space export --config contentful.json --skip-content --skip-roles --skip-webhooks",
+    "contentful:export:model": "contentful space export --config contentful.json",
+    "contentful:import": "contentful space import --config contentful.json",
+    "publish": "npm publish --access public"
+  },
+  "peerDependencies": {
+    "gatsby": "^2.15.7",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6"
+  },
+  "devDependencies": {
+    "@types/react-helmet": "^5.0.15",
+    "gatsby": "^2.15.7",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6"
   },
   "dependencies": {
-    "@narative/gatsby-theme-novela": "^0.*",
-    "gatsby-plugin-manifest": "^2.2.4",
-    "gatsby-plugin-netlify-cms": "^4.1.40",
-    "netlify-cms-app": "^2.11.23",
-    "netlify-cms-proxy-server": "^1.1.4",
-    "react": "^16.8.6",
-    "react-dom": "^16.8.6",
     "@emotion/core": "^10.0.14",
     "@emotion/styled": "^10.0.14",
     "@mdx-js/mdx": "^1.1.0",
