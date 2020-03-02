@@ -52,7 +52,7 @@ module.exports = ({ node, actions, getNode, createNodeId }, themeOptions) => {
 
     const fieldData = {
       ...node,
-      authorsPage: themeOptions.authorsPage || false,
+      authorsPage: true,
       slug: generateSlug(basePath, 'authors', slug),
     };
 
@@ -126,7 +126,7 @@ module.exports = ({ node, actions, getNode, createNodeId }, themeOptions) => {
     createNodeField({
       node,
       name: `authorsPage`,
-      value: themeOptions.authorsPage || false,
+      value: true,
     });
   }
 };

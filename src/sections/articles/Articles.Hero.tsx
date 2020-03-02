@@ -36,7 +36,7 @@ const ArticlesHero: React.FC<IAuthor> = ({ authors }) => {
   const hero = results.site.edges[0].node.siteMetadata.hero;
   const tilesIsActive = hasSetGridLayout && gridLayout === 'tiles';
   const featuredAuthor = authors.find(author => author.featured);
-
+    
   if (!featuredAuthor) {
     throw new Error(`
       No featured Author found.

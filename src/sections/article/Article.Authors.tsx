@@ -61,7 +61,7 @@ const CoAuthors: React.FC<AuthorsProps> = ({ authors }) => {
             {authors.map(author => (
               <CoAuthorsListItemOpen key={author.name}>
                 <AuthorLink
-                  as={author.authorsPage ? Link : "div"}
+                  as={Link}
                   to={author.slug}
                 >
                   <CoAuthorAvatarOpen>
@@ -91,7 +91,7 @@ const ArticleAuthors: React.FC<AuthorsProps> = ({ authors }) => {
   } else {
     return (
       <AuthorLink
-        as={authors[0].authorsPage ? Link : "div"}
+        as={Link}
         to={authors[0].slug}
       >
         <AuthorAvatar>

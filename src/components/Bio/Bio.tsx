@@ -9,7 +9,7 @@ const Bio: React.FC<IAuthor> = ({ author }) => {
   return (
     <BioContainer>
       <BioAvatar
-        as={author.authorsPage ? Link : 'div'}
+        as={Link}
         to={author.slug}
         data-a11y="false"
         aria-label="Author's bio"

@@ -84,11 +84,13 @@ const SharePageButton: React.FC<{}> = () => {
 const NavigationHeader: React.FC<{}> = () => {
   const [showBackArrow, setShowBackArrow] = useState<boolean>(false);
   const [previousPath, setPreviousPath] = useState<string>("/");
-  const { sitePlugin } = useStaticQuery(siteQuery);
 
   const [colorMode] = useColorMode();
   const fill = colorMode === "dark" ? "#fff" : "#000";
-  const { rootPath, basePath } = sitePlugin.pluginOptions;
+  const { rootPath, basePath } = {
+    rootPath: '/',
+    basePath: '/'
+  };
 
   useEffect(() => {
     const { width } = getWindowDimensions();

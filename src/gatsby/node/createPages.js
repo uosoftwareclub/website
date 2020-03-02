@@ -47,15 +47,13 @@ const byDate = (a, b) => new Date(b.dateForSEO) - new Date(a.dateForSEO);
 // ///////////////////////////////////////////////////////
 
 module.exports = async ({ actions: { createPage }, graphql }, themeOptions) => {
-  const {
-    rootPath,
-    basePath = '/',
-    authorsPath = '/authors',
-    authorsPage = true,
-    pageLength = 6,
-    sources = {},
-    mailchimp = '',
-  } = themeOptions;
+  const rootPath = null,
+  basePath = '/stories',
+  authorsPath = '/authors',
+  authorsPage = true,
+  pageLength = 6,
+  sources = {},
+  mailchimp = '';
 
   console.log(sources);
   // Defaulting to look at the local MDX files as sources.
