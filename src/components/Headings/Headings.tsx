@@ -29,6 +29,11 @@ const h1 = styled.h1`
     font-size: 32px;
     line-height: 1.3;
   `};
+
+  ${mediaqueries.phone`
+    font-size: 24px;
+    line-height: 1.3;
+  `};
 `;
 
 const h2 = styled.h2`
