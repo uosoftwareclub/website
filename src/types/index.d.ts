@@ -34,6 +34,7 @@ export interface IAuthor {
   avatar: {
     image: IGatsbyImageFluid;
     full: IGatsbyImageFluid;
+    medium: IGatsbyImageFluid
   };
 }
 
@@ -42,6 +43,7 @@ export interface IArticle {
   authors: IAuthor[];
   excerpt: string;
   body: string;
+  title: string;
   id: string;
   hero: {
     full: IGatsbyImageFluid;
@@ -80,3 +82,21 @@ export type Template = React.FC<{
   };
   location: Location;
 }>
+
+export interface IColorTheme {
+  colors: {
+    background: string;
+    accent: string;
+    grey?: string;
+    articleText: string
+  },
+  fonts: {
+    serif: string;
+    monospace: string;
+  }
+  colorModeTransition?: string;
+}
+
+export interface IColorThemeProps {
+  theme: IColorTheme
+}

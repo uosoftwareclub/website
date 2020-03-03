@@ -1,11 +1,12 @@
 import styled from "@emotion/styled";
 import mediaqueries from "@styles/media";
+import { IColorThemeProps } from "@types";
 
 const Blockquote = styled.blockquote`
-  transition: ${p => p.theme.colorModeTransition};
+  transition: ${(p: IColorThemeProps) => p.theme.colorModeTransition};
   margin: 15px auto 50px;
-  color: ${p => p.theme.colors.articleText};
-  font-family: ${p => p.theme.fonts.serif};
+  color: ${(p: IColorThemeProps) => p.theme.colors.articleText};
+  font-family: ${(p: IColorThemeProps) => p.theme.fonts.serif};
   font-style: italic;
 
   ${mediaqueries.tablet`

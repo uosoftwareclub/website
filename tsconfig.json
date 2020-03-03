@@ -1,0 +1,33 @@
+{
+  "compilerOptions": {
+    "target": "es6",
+    "lib": ["dom", "es2017"],
+    "sourceMap": true,
+    "strict": false,
+    "moduleResolution": "node",
+    "jsx": "react",
+    "esModuleInterop": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "noEmit": true,
+    "skipLibCheck": true,
+    "allowSyntheticDefaultImports": true,
+    "strictPropertyInitialization": false,
+    "baseUrl": "./",
+    "paths": {
+      "@components/*": ["src/components/*"],
+      "@styles/*": ["src/styles/*"],
+      "@icons": ["src/icons/index"],
+      "@utils": ["src/utils/index"],
+      "@types": ["src/types/index"]
+    }
+  },
+  "exclude": [
+    "node_modules",
+    "public",
+    "static",
+    "**/*.spec.ts",
+    "fallbacks",
+    "migrations"
+  ]
+}

@@ -1,4 +1,4 @@
-import { globalStyles } from "@styles/global";
-import { media } from "@styles/media";
+import { globalStyles } from "./global";
+import { media } from "./media";
 
 export { globalStyles, media };
