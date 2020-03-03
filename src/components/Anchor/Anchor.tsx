@@ -1,11 +1,20 @@
 import styled from "@emotion/styled";
 
-const Anchor = styled.a`
+interface LinkThemeProp {
+  theme: {
+    colors: {
+      accent: string;
+    },
+    colorModeTransition: string;
+  }
+}
+
+const Anchor = styled('a')`
   transition: ${p => p.theme.colorModeTransition};
-  color: ${p => p.theme.colors.accent};
+  color: ${(p: LinkThemeProp) => p.theme.colors.accent};
 
   &:visited {
-    color: ${p => p.theme.colors.accent};
+    color: ${(p: LinkThemeProp) => p.theme.colors.accent};
     opacity: 0.85;
   }
 
