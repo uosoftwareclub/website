@@ -42,6 +42,7 @@ export interface IArticle {
   authors: IAuthor[];
   excerpt: string;
   body: string;
+  title: string;
   id: string;
   hero: {
     full: IGatsbyImageFluid;
