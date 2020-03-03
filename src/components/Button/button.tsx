@@ -9,9 +9,13 @@ interface ButtonProps {
   isDisabled?: boolean
 }
 
-const Button = ({ text, type, isSubmitting, isDisabled }: ButtonProps) => (
-  <StyledButton type={type || 'submit'} role="button" aria-label={text} disabled={isDisabled}>
-    {isSubmitting ? <Spinner /> : text}
+const Button: React.FC<ButtonProps> = ({ text, type, isSubmitting, isDisabled }) => (
+  <StyledButton
+    type={type || 'submit'}
+    role="button"
+    aria-label={text}
+    disabled={isDisabled}>
+      {isSubmitting ? <Spinner /> : text}
   </StyledButton>
 )
 
