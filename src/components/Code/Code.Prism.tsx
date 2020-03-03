@@ -7,6 +7,8 @@ import theme from "prism-react-renderer/themes/oceanicNext";
 import Icons from "@icons";
 import mediaqueries from "@styles/media";
 import { copyToClipboard } from "@utils";
+import { IColorThemeProps, IColorTheme } from "@types";
+import { useThemeUI } from "theme-ui";
 
 interface CopyProps {
   toCopy: string
@@ -14,7 +16,9 @@ interface CopyProps {
 
 const Copy: React.FC<CopyProps> = ({ toCopy }) => {
   const [hasCopied, setHasCopied] = useState<boolean>(false);
-
+  const themeContext = useThemeUI();
+  const theme: IColorTheme = themeContext.theme as any;
+  
   function copyToClipboardOnClick() {
     if (hasCopied) return;
 
@@ -27,7 +31,7 @@ const Copy: React.FC<CopyProps> = ({ toCopy }) => {
   }
 
   return (
-    <CopyButton onClick={copyToClipboardOnClick} data-a11y="false">
+    <CopyButton theme={theme} onClick={copyToClipboardOnClick} data-a11y="false">
       {hasCopied ? (
         <>
           Copied <Icons.Copied fill="#6f7177" />
@@ -151,7 +155,7 @@ const CopyButton = styled.button`
     top: -2%;
     width: 104%;
     height: 104%;
-    border: 2px solid ${p => p.theme.colors.accent};
+    border: 2px solid ${(p: IColorThemeProps) => p.theme.colors.accent};
     border-radius: 5px;
     background: rgba(255, 255, 255, 0.01);
   }
@@ -169,12 +173,12 @@ const Container = styled.div`
   font-size: 13px;
   margin: 15px auto 50px;
   border-radius: 5px;
-  font-family: ${p => p.theme.fonts.monospace} !important;
+  font-family: ${(p: IColorThemeProps) => p.theme.fonts.monospace} !important;
 
   textarea,
   pre {
     padding: 32px !important;
-    font-family: ${p => p.theme.fonts.monospace} !important;
+    font-family: ${(p: IColorThemeProps) => p.theme.fonts.monospace} !important;
   }
 
   ${mediaqueries.desktop`

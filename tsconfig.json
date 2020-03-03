@@ -3,6 +3,7 @@
     "target": "es6",
     "lib": ["dom", "es2017"],
     "sourceMap": true,
+    "strict": false,
     "moduleResolution": "node",
     "jsx": "react",
     "esModuleInterop": true,
@@ -15,7 +16,6 @@
     "baseUrl": "./",
     "paths": {
       "@components/*": ["src/components/*"],
-      "@types/*": ["src/types/*"],
       "@styles/*": ["src/styles/*"],
       "@icons": ["src/icons/index"],
       "@utils": ["src/utils/index"],
