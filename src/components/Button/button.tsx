@@ -1,6 +1,8 @@
 import React from 'react'
 import styled from "@emotion/styled";
 import { keyframes } from "@emotion/core";
+import { useThemeUI } from 'theme-ui';
+import { IColorTheme, IColorThemeProps } from '@types';
 
 interface ButtonProps {
   text: string
@@ -9,15 +11,20 @@ interface ButtonProps {
   isDisabled?: boolean
 }
 
-const Button: React.FC<ButtonProps> = ({ text, type, isSubmitting, isDisabled }) => (
-  <StyledButton
-    type={type || 'submit'}
-    role="button"
-    aria-label={text}
-    disabled={isDisabled}>
-      {isSubmitting ? <Spinner /> : text}
-  </StyledButton>
-)
+const Button: React.FC<ButtonProps> = ({ text, type, isSubmitting, isDisabled }) => {
+  const themeContext = useThemeUI();
+  const theme: IColorTheme = themeContext.theme as any;
+  return (
+    <StyledButton
+      type={type || 'submit'}
+      role="button"
+      theme={theme}
+      aria-label={text}
+      disabled={isDisabled}>
+        {isSubmitting ? <Spinner /> : text}
+    </StyledButton>
+  )
+}
 
 export default Button
 
@@ -64,10 +71,10 @@ const StyledButton = styled.button`
   justify-content: center;
   width: 250px;
   height: 4.5rem;
-  border: 1px solid ${p => p.theme.colors.primary};
+  border: 1px solid ${(p: IColorThemeProps) => p.theme.colors.primary};
   border-radius: 4px;
-  background: ${p => p.theme.colors.primary};
-  color: ${p => p.theme.colors.background};
+  background: ${(p: IColorThemeProps) => p.theme.colors.primary};
+  color: ${(p: IColorThemeProps) => p.theme.colors.background};
   font-weight: 500;
   font-size: 1.8rem;
   box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.1);

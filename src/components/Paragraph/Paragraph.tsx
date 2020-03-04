@@ -1,12 +1,13 @@
 import styled from "@emotion/styled";
 import mediaqueries from "@styles/media";
+import { IColorThemeProps } from "@types";
 
 const Paragraph = styled.p`
   line-height: 1.756;
   font-size: 18px;
-  color: ${p => p.theme.colors.articleText};
-  font-family: ${p => p.theme.fonts.sansSerif};
-  transition: ${p => p.theme.colorModeTransition};
+  color: ${(p: IColorThemeProps) => p.theme.colors.articleText};
+  font-family: ${(p: IColorThemeProps) => p.theme.fonts.sansSerif};
+  transition: ${(p: IColorThemeProps) => p.theme.colorModeTransition};
   margin: 0 auto 35px;
   width: 100%;
   max-width: 680px;

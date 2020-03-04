@@ -2,7 +2,7 @@ import React from "react";
 
 import CodeBlock from "./Code.Prism";
 
-function preToCodeBlock(preProps) {
+const preToCodeBlock = (preProps) => {
   if (
     preProps.children &&
     preProps.children.props &&
@@ -28,7 +28,7 @@ function preToCodeBlock(preProps) {
   }
 }
 
-const CodePre: React.FC<{}> = (preProps) => {
+const CodePre: React.FC<any> = (preProps) => {
   const props = preToCodeBlock(preProps);
 
   if (props) {

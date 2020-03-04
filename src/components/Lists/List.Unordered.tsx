@@ -1,13 +1,23 @@
 import styled from '@emotion/styled';
 import mediaqueries from '@styles/media';
+import { IColorThemeProps } from '@types';
 
+/**
+ * @abstract Styled unordered lists
+ * 
+ * @example
+ * <UnorderedList>
+ *   <li>A<li>
+ *   <li>B<li>
+ * </UnorderedList>
+ */
 const UnorderedList = styled.ul`
   list-style: none;
   counter-reset: list;
-  color: ${p => p.theme.colors.articleText};
+  color: ${(p: IColorThemeProps) => p.theme.colors.articleText};
   position: relative;
   padding: 15px 0 30px 30px;
-  transition: ${p => p.theme.colorModeTransition};
+  transition: ${(p: IColorThemeProps) => p.theme.colorModeTransition};
   margin: 0 auto;
   font-size: 18px;
 

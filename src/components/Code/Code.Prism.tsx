@@ -81,7 +81,7 @@ const CodePrism: React.FC<CodePrismProps> = ({
 
   if (props["live"]) {
     return (
-      <Container>
+      <Container theme={null}>
         <LiveProvider code={codeString} noInline={true} theme={theme}>
           <LiveEditor style={{ marginBottom: "3px", borderRadius: "2px" }} />
           <LivePreview style={{ fontSize: "18px", borderRadius: "2px" }} />

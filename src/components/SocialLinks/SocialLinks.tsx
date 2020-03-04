@@ -9,7 +9,7 @@ interface SocialLinksProps {
     name: string;
     url: string;
   }[];
-  fill: string;
+  fill?: string;
 }
 
 const icons = {

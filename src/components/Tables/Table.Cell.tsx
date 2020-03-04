@@ -1,7 +1,8 @@
 import styled from "@emotion/styled";
 import mediaqueries from "@styles/media";
+import { IColorThemeProps } from "@types";
 
-const Cell = styled.td`
+const Cell = styled.td<IColorThemeProps>`
   border-top: 1px solid ${p => p.theme.colors.horizontalRule};
   padding: 15px 30px;
   font-size: 16px;

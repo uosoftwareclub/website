@@ -55,6 +55,7 @@ const MDX: React.FC<MDXProps> = ({ content, children, ...props }) => {
     <MDXProvider components={components}>
       <MDXBody>
         <MDXRenderer isDark={colorMode === "dark"} {...props}>
+          {/* TODO Figure Out This Type Issue */}
           {content}
         </MDXRenderer>
         {children}

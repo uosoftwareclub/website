@@ -6,11 +6,15 @@ import Headings from "@components/Headings";
 
 import styled from "@emotion/styled";
 import mediaqueries from "@styles/media";
+import { IColorThemeProps, IColorTheme } from "@types";
+import { useThemeUI } from "theme-ui";
 
 const Subscription: React.FC<{}> = () => {
   const [email, setEmail] = useState("");
   const [error, setError] = useState("");
   const [subscribed, setSubscribed] = useState(false);
+  const themeContext = useThemeUI();
+  const theme: IColorTheme = themeContext.theme as any;
 
   function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -40,18 +44,19 @@ const Subscription: React.FC<{}> = () => {
 
   return (
     <Section narrow>
-      <SubscriptionContainer>
+      <SubscriptionContainer theme={theme}>
         <Content>
           <Heading>
             Join our email list and get notified about new content
           </Heading>
-          <Text>
+          <Text theme={theme}>
             Be the first to receive our latest content with the ability to
             opt-out at anytime. We promise to not spam your inbox or share your
             email with any third parties.
           </Text>
-          <Form onSubmit={handleSubmit} hasError={error}>
+          <Form theme={theme} onSubmit={handleSubmit} hasError={error}>
             <Input
+              theme={theme}
               placeholder="your@email.com"
               name="email"
               type="email"
@@ -60,6 +65,7 @@ const Subscription: React.FC<{}> = () => {
               hasError={error}
             />
             <Button
+              theme={theme}
               type="submit"
               hasError={error}
               subscribed={subscribed}
@@ -67,7 +73,7 @@ const Subscription: React.FC<{}> = () => {
             >
               {subscribed ? <CheckMarkIcon /> : "Subscribe"}
             </Button>
-            {error && <Error dangerouslySetInnerHTML={{ __html: error }} />}
+            {error && <Error theme={theme} dangerouslySetInnerHTML={{ __html: error }} />}
           </Form>
         </Content>
       </SubscriptionContainer>
@@ -83,7 +89,7 @@ const SubscriptionContainer = styled.div`
   flex-direction: column;
   padding: 64px 0 55px;
   margin: 10px auto 100px;
-  background: ${p => p.theme.colors.card};
+  background: ${(p: IColorThemeProps) => p.theme.colors.card};
   box-shadow: 0px 4px 50px rgba(0, 0, 0, 0.05);
   z-index: 1;
 
@@ -125,7 +131,7 @@ const Heading = styled(Headings.h3)`
 
 const Text = styled.p`
   margin: 0 auto 30px;
-  color: ${p => p.theme.colors.grey};
+  color: ${(p: IColorThemeProps) => p.theme.colors.grey};
   line-height: 1.75;
 
   ${mediaqueries.tablet`
@@ -134,7 +140,7 @@ const Text = styled.p`
   `}
 `;
 
-const Form = styled.form<{ hasError: string }>`
+const Form = styled.form<{ hasError: string } & IColorThemeProps>`
   position: relative;
 
   &::after {
@@ -151,7 +157,7 @@ const Form = styled.form<{ hasError: string }>`
   }
 `;
 
-const Input = styled.input<{ hasError: string }>`
+const Input = styled.input<{ hasError: string } & IColorThemeProps>`
   position: relative;
   background: ${p =>
     p.hasError
@@ -184,7 +190,7 @@ const Input = styled.input<{ hasError: string }>`
   `}
 `;
 
-const Button = styled.button<{ hasError: string; subscribed: boolean }>`
+const Button = styled.button<{ hasError: string; subscribed: boolean } & IColorThemeProps>`
   position: absolute;
   left: 306px;
   top: 3px;
@@ -234,7 +240,7 @@ const Button = styled.button<{ hasError: string; subscribed: boolean }>`
   `}
 `;
 
-const Error = styled.div`
+const Error = styled.div<IColorThemeProps>`
   position: absolute;
   left: 35px;
   bottom: -20px;

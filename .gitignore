@@ -69,3 +69,5 @@ yarn-error.log
 .yarn-integrity
 
 .netlify/
+reduxcacheFLbiIz/redux.node.state_0
+reduxcacheFLbiIz/redux.rest.state

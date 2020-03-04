@@ -4,7 +4,11 @@ import { css } from "@emotion/core";
 import mediaqueries from "@styles/media";
 
 /**
- * Example:
+ * @abstract Heading Component 
+ * 
+ * Provides typography styling for headings.
+ * 
+ * @example
  * <Heading.h1>Lorem Ipsum</Heading.h1>
  */
 

@@ -15,6 +15,12 @@ interface IGatsbyImage {
   tracedSVG?: string;
 }
 
+export interface IImg {
+  // TODO figure out the type for Gatsby Image Soruce
+  src: any;
+  alt: string;
+}
+
 interface IGatsbyImageFluid extends IGatsbyImage {
   maxHeight: number;
   maxWidth: number;
@@ -85,18 +91,28 @@ export type Template = React.FC<{
 
 export interface IColorTheme {
   colors: {
+    primary: string;
     background: string;
     accent: string;
     grey?: string;
-    articleText: string
+    articleText: string;
+    horizontalRule: string;
+    progress: string;
+    track: string;
+    card: string;
+    error: string;
+    errorBackground: string;
+    inputBackground: string
   },
   fonts: {
     serif: string;
     monospace: string;
+    sansSerif: string;
   }
   colorModeTransition?: string;
 }
 
 export interface IColorThemeProps {
-  theme: IColorTheme
+  theme: IColorTheme;
+  isDark?: boolean;
 }
