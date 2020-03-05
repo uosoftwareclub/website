@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import styled from "@emotion/styled";
-import { useColorMode } from "theme-ui";
+import { useColorMode, useThemeUI } from "theme-ui";
 
 import mediaqueries from "@styles/media";
 import { copyToClipboard } from "@utils";
+import { IColorThemeProps, IColorTheme } from "@types";
 
 const ShareDarkModeOffIcon: React.FC<{}> = () => (
   <svg
@@ -42,6 +43,8 @@ const ShareDarkModeOnIcon: React.FC<{}> = () => (
 const DarkModeToggle: React.FC<{}> = () => {
   const [colorMode, setColorMode] = useColorMode();
   const isDark = colorMode === `dark`;
+  const themeContext = useThemeUI();
+  const theme: IColorTheme = themeContext.theme as any;
 
   function toggleColorMode(event) {
     event.preventDefault();
@@ -53,8 +56,8 @@ const DarkModeToggle: React.FC<{}> = () => {
       onClick={toggleColorMode}
       aria-label="Toggle dark and light mode"
     >
-      <MoonOrSun isDark={isDark} />
-      <MoonMask isDark={isDark} />
+      <MoonOrSun theme={theme} isDark={isDark} />
+      <MoonMask theme={theme} isDark={isDark} />
     </IconWrapper>
   );
 };
@@ -165,7 +168,7 @@ const IconWrapper = styled.button`
 `;
 
 // This is based off a codepen! Much appreciated to: https://codepen.io/aaroniker/pen/KGpXZo
-const MoonOrSun = styled.div<{ isDark: boolean }>`
+const MoonOrSun = styled.div<{ isDark: boolean } & IColorThemeProps>`
   position: relative;
   width: 24px;
   height: 24px;
@@ -217,7 +220,7 @@ const MoonOrSun = styled.div<{ isDark: boolean }>`
   }
 `;
 
-const MoonMask = styled.div<{ isDark: boolean }>`
+const MoonMask = styled.div<{ isDark: boolean } & IColorThemeProps>`
   position: absolute;
   right: -1px;
   top: -8px;

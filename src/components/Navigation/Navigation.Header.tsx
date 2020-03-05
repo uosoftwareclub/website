@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import styled from "@emotion/styled";
 import { Link, navigate, graphql, useStaticQuery } from "gatsby";
-import { useColorMode } from "theme-ui";
+import { useColorMode, useThemeUI } from "theme-ui";
 
 import Section from "@components/Section";
 import Logo from "@components/Logo";
@@ -13,21 +13,13 @@ import {
   getWindowDimensions,
   getBreakpointFromTheme,
 } from "@utils";
-
-const siteQuery = graphql`
-  {
-    sitePlugin(name: { eq: "@narative/gatsby-theme-novela" }) {
-      pluginOptions {
-        rootPath
-        basePath
-      }
-    }
-  }
-`;
+import { IColorThemeProps, IColorTheme } from "@types";
 
 const DarkModeToggle: React.FC<{}> = () => {
   const [colorMode, setColorMode] = useColorMode();
   const isDark = colorMode === `dark`;
+  const themeContext = useThemeUI();
+  const theme: IColorTheme = themeContext.theme as any;
 
   function toggleColorMode(event) {
     event.preventDefault();
@@ -37,13 +29,14 @@ const DarkModeToggle: React.FC<{}> = () => {
   return (
     <IconWrapper
       isDark={isDark}
+      theme={theme}
       onClick={toggleColorMode}
       data-a11y="false"
       aria-label={isDark ? "Activate light mode" : "Activate dark mode"}
       title={isDark ? "Activate light mode" : "Activate dark mode"}
     >
-      <MoonOrSun isDark={isDark} />
-      <MoonMask isDark={isDark} />
+      <MoonOrSun theme={theme} isDark={isDark} />
+      <MoonMask theme={theme} isDark={isDark} />
     </IconWrapper>
   );
 };
@@ -53,6 +46,8 @@ const SharePageButton: React.FC<{}> = () => {
   const [colorMode] = useColorMode();
   const isDark = colorMode === `dark`;
   const fill = isDark ? "#fff" : "#000";
+  const themeContext = useThemeUI();
+  const theme: IColorTheme = themeContext.theme as any;
 
   function copyToClipboardOnClick() {
     if (hasCopied) return;
@@ -67,6 +62,7 @@ const SharePageButton: React.FC<{}> = () => {
 
   return (
     <IconWrapper
+      theme={theme}
       isDark={isDark}
       onClick={copyToClipboardOnClick}
       data-a11y="false"
@@ -84,6 +80,8 @@ const SharePageButton: React.FC<{}> = () => {
 const NavigationHeader: React.FC<{}> = () => {
   const [showBackArrow, setShowBackArrow] = useState<boolean>(false);
   const [previousPath, setPreviousPath] = useState<string>("/");
+  const themeContext = useThemeUI();
+  const theme: IColorTheme = themeContext.theme as any;
 
   const [colorMode] = useColorMode();
   const fill = colorMode === "dark" ? "#fff" : "#000";
@@ -111,6 +109,7 @@ const NavigationHeader: React.FC<{}> = () => {
     <Section>
       <NavContainer>
         <LogoLink
+          theme={theme}
           to={rootPath || basePath}
           data-a11y="false"
           title="Navigate back to the homepage"
@@ -181,7 +180,7 @@ const NavContainer = styled.div`
   }
 `;
 
-const LogoLink = styled(Link)<{ back: string }>`
+const LogoLink = styled(Link)<{ back: string } & IColorThemeProps>`
   position: relative;
   display: flex;
   align-items: center;
@@ -247,7 +246,7 @@ const ToolTip = styled.div<{ isDark: boolean; hasCopied: boolean }>`
   }
 `;
 
-const IconWrapper = styled.button<{ isDark: boolean }>`
+const IconWrapper = styled.button<{ isDark: boolean } & IColorThemeProps>`
   opacity: 0.5;
   position: relative;
   border-radius: 5px;
@@ -288,7 +287,7 @@ const IconWrapper = styled.button<{ isDark: boolean }>`
 `;
 
 // This is based off a codepen! Much appreciated to: https://codepen.io/aaroniker/pen/KGpXZo
-const MoonOrSun = styled.div<{ isDark: boolean }>`
+const MoonOrSun = styled.div<{ isDark: boolean } & IColorThemeProps>`
   position: relative;
   width: 24px;
   height: 24px;
@@ -340,7 +339,7 @@ const MoonOrSun = styled.div<{ isDark: boolean }>`
   }
 `;
 
-const MoonMask = styled.div<{ isDark: boolean }>`
+const MoonMask = styled.div<{ isDark: boolean } & IColorThemeProps>`
   position: absolute;
   right: -1px;
   top: -8px;

@@ -1,14 +1,15 @@
 import styled from '@emotion/styled';
 import mediaqueries from '@styles/media';
+import { IColorThemeProps } from '@types';
 
 const OrderedList = styled.ol`
   list-style: none;
   counter-reset: list;
-  color: ${p => p.theme.colors.articleText};
+  color: ${(p: IColorThemeProps) => p.theme.colors.articleText};
   position: relative;
   padding: 15px 0 30px 30px;
   margin: 0 auto;
-  transition: ${p => p.theme.colorModeTransition};
+  transition: ${(p: IColorThemeProps) => p.theme.colorModeTransition};
   font-size: 18px;
 
   width: 100%;
@@ -54,7 +55,7 @@ const OrderedList = styled.ol`
     width: 3rem;
     display: inline-block;
     position: absolute;
-    color: ${p => p.theme.colors.articleText};
+    color: ${(p: IColorThemeProps) => p.theme.colors.articleText};
   }
 
   li::before {

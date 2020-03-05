@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import styled from "@emotion/styled";
 import OutsideClickHandler from "react-outside-click-handler";
-import { useColorMode } from "theme-ui";
+import { useColorMode, useThemeUI } from "theme-ui";
 import { Link } from "gatsby";
 
 import Image from "@components/Image";
 import Icons from "@icons";
 import mediaqueries from "@styles/media";
-import { IAuthor } from "@types";
+import { IAuthor, IColorThemeProps, IColorTheme } from "@types";
 
 /**
  * When generating the author names we're also checking to see how long the
@@ -34,16 +34,18 @@ const CoAuthors: React.FC<AuthorsProps> = ({ authors }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [colorMode] = useColorMode();
   const names = generateAuthorNames(authors);
+  const themeContext = useThemeUI();
+  const theme: IColorTheme = themeContext.theme as any;
 
   const fill = colorMode === "dark" ? "#fff" : "#000";
   const listWidth = { width: `${10 + authors.length * 15}px` };
 
   return (
-    <CoAuthorsContainer onClick={() => setIsOpen(!isOpen)} isOpen={isOpen}>
+    <CoAuthorsContainer theme={theme} onClick={() => setIsOpen(!isOpen)} isOpen={isOpen}>
       <CoAuthorsList style={listWidth}>
         {authors.map((author, index) => (
-          <CoAuthorAvatar style={{ left: `${index * 15}px` }} key={author.name}>
-            <RoundedImage src={author.avatar.small} />
+          <CoAuthorAvatar theme={theme} style={{ left: `${index * 15}px` }} key={author.name}>
+            <RoundedImage alt={`${author.name}'s Avatar`} src={author.avatar.small} />
           </CoAuthorAvatar>
         ))}
       </CoAuthorsList>
@@ -54,7 +56,7 @@ const CoAuthors: React.FC<AuthorsProps> = ({ authors }) => {
 
       {isOpen && (
         <OutsideClickHandler onOutsideClick={() => setIsOpen(!isOpen)}>
-          <CoAuthorsListOpen>
+          <CoAuthorsListOpen theme={theme}>
             <IconOpenContainer>
               <Icons.ToggleClose fill={fill} />
             </IconOpenContainer>
@@ -64,10 +66,10 @@ const CoAuthors: React.FC<AuthorsProps> = ({ authors }) => {
                   as={Link}
                   to={author.slug}
                 >
-                  <CoAuthorAvatarOpen>
-                    <RoundedImage src={author.avatar.small} />
+                  <CoAuthorAvatarOpen theme={theme}>
+                    <RoundedImage alt={`${author.name}'s Avatar`} src={author.avatar.small} />
                   </CoAuthorAvatarOpen>
-                  <AuthorNameOpen>{author.name}</AuthorNameOpen>
+                  <AuthorNameOpen theme={theme}>{author.name}</AuthorNameOpen>
                 </AuthorLink>
               </CoAuthorsListItemOpen>
             ))}
@@ -84,7 +86,8 @@ const CoAuthors: React.FC<AuthorsProps> = ({ authors }) => {
  */
 const ArticleAuthors: React.FC<AuthorsProps> = ({ authors }) => {
   const hasCoAuthors = authors.length > 1;
-
+  const themeContext = useThemeUI();
+  const theme: IColorTheme = themeContext.theme as any;
   // Special dropdown UI for multiple authors
   if (hasCoAuthors) {
     return <CoAuthors authors={authors} />;
@@ -94,8 +97,8 @@ const ArticleAuthors: React.FC<AuthorsProps> = ({ authors }) => {
         as={Link}
         to={authors[0].slug}
       >
-        <AuthorAvatar>
-          <RoundedImage src={authors[0].avatar.small} />
+        <AuthorAvatar theme={theme}>
+          <RoundedImage alt={`${authors[0].name}'s Avatar`} src={authors[0].avatar.small} />
         </AuthorAvatar>
         <strong>{authors[0].name}</strong>
         <HideOnMobile>,&nbsp;</HideOnMobile>
@@ -106,7 +109,7 @@ const ArticleAuthors: React.FC<AuthorsProps> = ({ authors }) => {
 
 export default ArticleAuthors;
 
-const AuthorAvatar = styled.div`
+const AuthorAvatar = styled.div<IColorThemeProps>`
   height: 25px;
   width: 25px;
   border-radius: 50%;
@@ -127,7 +130,7 @@ const RoundedImage = styled(Image)`
   border-radius: 50%;
 `;
 
-const AuthorLink = styled.div`
+const AuthorLink = styled.div<IColorThemeProps>`
   display: flex;
   align-items: center;
   color: inherit;
@@ -151,7 +154,7 @@ const CoAuthorsList = styled.div`
   `}
 `;
 
-const CoAuthorsListOpen = styled.ul`
+const CoAuthorsListOpen = styled.ul<IColorThemeProps>`
   position: absolute;
   z-index: 2;
   left: -21px;
@@ -176,7 +179,7 @@ const CoAuthorsListItemOpen = styled.li`
   }
 `;
 
-const CoAuthorAvatarOpen = styled.div`
+const CoAuthorAvatarOpen = styled.div<IColorThemeProps>`
   height: 25px;
   width: 25px;
   border-radius: 50%;
@@ -191,7 +194,7 @@ const CoAuthorAvatarOpen = styled.div`
   }
 `;
 
-const CoAuthorAvatar = styled.div`
+const CoAuthorAvatar = styled.div<IColorThemeProps>`
   position: absolute;
   height: 25px;
   width: 25px;
@@ -231,7 +234,7 @@ const NameContainer = styled.strong`
   `}
 `;
 
-const AuthorNameOpen = styled.strong`
+const AuthorNameOpen = styled.strong<IColorThemeProps>`
   position: relative;
   cursor: pointer;
   color: ${p => p.theme.colors.secondary};
@@ -259,7 +262,7 @@ const IconOpenContainer = styled.div`
   right: 21px;
 `;
 
-const CoAuthorsContainer = styled.div<{ isOpen: boolean }>`
+const CoAuthorsContainer = styled.div<{ isOpen: boolean } & IColorThemeProps>`
   position: relative;
   display: flex;
   align-items: center;

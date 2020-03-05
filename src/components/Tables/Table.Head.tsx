@@ -1,6 +1,7 @@
 import styled from "@emotion/styled";
+import { IColorThemeProps } from "@types";
 
-const Head = styled.thead`
+const Head = styled.thead<IColorThemeProps>`
   text-align: left;
   border-collapse: collapse;
   position: relative;

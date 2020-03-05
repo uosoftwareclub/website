@@ -1,8 +1,10 @@
 import React from "react";
 import styled from "@emotion/styled";
 import mediaqueries from "@styles/media";
+import { IColorThemeProps, IColorTheme } from "@types";
+import { useThemeUI } from "theme-ui";
 
-const StyledTable = styled.table`
+const StyledTable = styled.table<IColorThemeProps>`
   position: relative;
   line-height: 1.65;
   color: ${p => p.theme.colors.grey};
@@ -31,9 +33,11 @@ const StyledTable = styled.table`
 `;
 
 const Table: React.FC<{}> = ({ children }) => {
+  const themeContext = useThemeUI();
+  const theme: IColorTheme = themeContext.theme as any;
   return (
     <div style={{ overflowX: "auto", padding: "0 20px" }}>
-      <StyledTable>{children}</StyledTable>
+      <StyledTable theme={theme}>{children}</StyledTable>
     </div>
   );
 };

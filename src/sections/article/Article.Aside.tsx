@@ -34,8 +34,10 @@ const Aside: React.FC<AsideProps> = ({ contentHeight, children }) => {
   const [shouldFixAside, setShouldFixAside] = useState<boolean>(false);
 
   const show = imageOffset && progress < 100;
+
   const childrenWithProps = React.Children.map(children, child =>
-    React.cloneElement(child, { show }),
+    // Anno: https://stackoverflow.com/questions/42261783/how-to-assign-the-correct-typing-to-react-cloneelement-when-giving-properties-to
+    React.cloneElement(child as React.ReactElement<any>, { show }),
   );
 
   useEffect(() => {

@@ -2,7 +2,7 @@ import React from "react";
 import ImageWithZoom from "react-medium-image-zoom";
 import { useThemeUI } from "theme-ui";
 
-function handleImageZoomBackground(background: string) {
+const handleImageZoomBackground = (background: string) => {
   const images = Array.from(document.getElementsByClassName("Image__Zoom"));
 
   images.map(img => {
@@ -10,12 +10,12 @@ function handleImageZoomBackground(background: string) {
       img.previousElementSibling &&
       img.previousElementSibling.tagName === "DIV"
     ) {
-      img.previousElementSibling.style.background = background;
+      (img.previousElementSibling as HTMLElement).style.background = background;
     }
   });
 }
 
-const ImageZoom: React.FC<{}> = (props) => {
+const ImageZoom: React.FC<any> = (props) => {
   const { theme } = useThemeUI();
 
   const image = {

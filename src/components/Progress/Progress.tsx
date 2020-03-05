@@ -3,6 +3,8 @@ import styled from "@emotion/styled";
 import throttle from "lodash/throttle";
 
 import { clamp } from "@utils";
+import { IColorThemeProps, IColorTheme } from "@types";
+import { useThemeUI } from "theme-ui";
 
 export interface IProgress {
   contentHeight: number;
@@ -10,7 +12,8 @@ export interface IProgress {
 
 const Progress: React.FC<IProgress> = ({ contentHeight }) => {
   const [progress, setProgress] = useState<number>(0);
-
+  const themeContext = useThemeUI();
+  const theme: IColorTheme = themeContext.theme as any;
   useEffect(() => {
     const handleScroll = throttle(() => {
       const percentComplete = (window.scrollY / contentHeight) * 100;
@@ -30,8 +33,8 @@ const Progress: React.FC<IProgress> = ({ contentHeight }) => {
 
   return (
     <ProgressContainer tabIndex={-1}>
-      <Trackline aria-hidden="true">
-        <ProgressLine style={{ transform: `translateY(${progress}%)` }} />
+      <Trackline theme={theme} aria-hidden="true">
+        <ProgressLine theme={theme} style={{ transform: `translateY(${progress}%)` }} />
       </Trackline>
     </ProgressContainer>
   );
@@ -52,7 +55,7 @@ const Trackline = styled.div`
   height: calc(88vh - 40px);
   max-height: 425px;
   width: 1px;
-  background-color: ${p => p.theme.colors.track};
+  background-color: ${(p: IColorThemeProps) => p.theme.colors.track};
   opacity: 0.6;
   overflow: hidden;
 `;
@@ -62,6 +65,6 @@ const ProgressLine = styled.div`
   height: 100%;
   top: -100%;
   width: 1px;
-  background-color: ${p => p.theme.colors.progress};
+  background-color: ${(p: IColorThemeProps) => p.theme.colors.progress};
   left: 0;
 `;

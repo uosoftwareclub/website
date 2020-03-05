@@ -8,7 +8,8 @@ import Image from "@components/Image";
 
 import mediaqueries from "@styles/media";
 
-import { IArticle } from "@types";
+import { IArticle, IColorTheme, IColorThemeProps } from "@types";
+import { useThemeUI } from "theme-ui";
 
 interface ArticlesNextProps {
   articles: IArticle[]
@@ -46,25 +47,28 @@ interface GridItemProps {
 
 const GridItem: React.FC<GridItemProps> = ({ article, narrow }) => {
   if (!article) return null;
+  const themeContext = useThemeUI();
+  const theme: IColorTheme = themeContext.theme as any;
 
   const hasOverflow = narrow && article.title.length > 35;
   const imageSource = narrow ? article.hero.narrow : article.hero.regular;
 
   return (
     <ArticleLink
+      theme={theme}
       to={article.slug}
       data-a11y="false"
       narrow={narrow ? "true" : "false"}
     >
-      <Item>
+      <Item theme={theme}>
         <ImageContainer>
-          <Image src={imageSource} />
+          <Image alt={article.title} src={imageSource} />
         </ImageContainer>
         <Title dark hasOverflow={hasOverflow}>
           {article.title}
         </Title>
-        <Excerpt hasOverflow={hasOverflow}>{article.excerpt}</Excerpt>
-        <MetaData>
+        <Excerpt theme={theme} narrow={narrow} hasOverflow={hasOverflow}>{article.excerpt}</Excerpt>
+        <MetaData theme={theme}>
           {article.date} · {article.timeToRead} min read
         </MetaData>{" "}
       </Item>
@@ -117,7 +121,7 @@ const Grid = styled.div<{ numberOfArticles: number }>`
   `}
 `;
 
-const ImageContainer = styled.div`
+const ImageContainer = styled.div<{narrow?: boolean}>`
   position: relative;
   height: 280px;
   box-shadow: 0 30px 60px -10px rgba(0, 0, 0, ${p => (p.narrow ? 0.22 : 0.3)}),
@@ -145,7 +149,7 @@ const ImageContainer = styled.div`
   `}
 `;
 
-const Item = styled.div`
+const Item = styled.div<IColorThemeProps>`
   position: relative;
 
   @media (max-width: 540px) {
@@ -156,7 +160,7 @@ const Item = styled.div`
   }
 `;
 
-const Title = styled(Headings.h3)`
+const Title = styled(Headings.h3)<{hasOverflow: boolean} & IColorThemeProps>`
   font-size: 22px;
   line-height: 1.4;
   margin-bottom: ${p => (p.hasOverflow ? "45px" : "10px")};
@@ -175,7 +179,7 @@ const Title = styled(Headings.h3)`
   `}
 `;
 
-const Excerpt = styled.p<{ narrow: boolean; hasOverflow: boolean }>`
+const Excerpt = styled.p<{ narrow: boolean; hasOverflow: boolean } & IColorThemeProps>`
   ${limitToTwoLines};
   font-size: 16px;
   margin-bottom: 10px;
@@ -199,7 +203,7 @@ const Excerpt = styled.p<{ narrow: boolean; hasOverflow: boolean }>`
   `}
 `;
 
-const MetaData = styled.div`
+const MetaData = styled.div<IColorThemeProps>`
   font-weight: 600;
   font-size: 16px;
   color: ${p => p.theme.colors.grey};
@@ -211,7 +215,7 @@ const MetaData = styled.div`
   `}
 `;
 
-const ArticleLink = styled(Link)<{ narrow: string }>`
+const ArticleLink = styled(Link)<{ narrow: string } & IColorThemeProps>`
   position: relative;
   display: block;
   width: 100%;

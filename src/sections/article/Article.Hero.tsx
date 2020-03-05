@@ -5,9 +5,10 @@ import Headings from '@components/Headings';
 import Image, { ImagePlaceholder } from '@components/Image';
 
 import mediaqueries from '@styles/media';
-import { IArticle, IAuthor } from '@types';
+import { IArticle, IAuthor, IColorTheme, IColorThemeProps } from '@types';
 
 import ArticleAuthors from './Article.Authors';
+import { useThemeUI } from 'theme-ui';
 
 interface ArticleHeroProps {
   article: IArticle;
@@ -20,12 +21,14 @@ const ArticleHero: React.FC<ArticleHeroProps> = ({ article, authors }) => {
     article.hero &&
     Object.keys(article.hero.full).length !== 0 &&
     article.hero.full.constructor === Object;
+  const themeContext = useThemeUI();
+  const theme: IColorTheme = themeContext.theme as any;
 
   return (
-    <Hero>
+    <Hero theme={theme}>
       <Header>
         <HeroHeading>{article.title}</HeroHeading>
-        <HeroSubtitle hasCoAUthors={hasCoAUthors}>
+        <HeroSubtitle theme={theme} hasCoAUthors={hasCoAUthors}>
           <ArticleAuthors authors={authors} />
           <ArticleMeta hasCoAUthors={hasCoAUthors}>
             {article.date} · {article.timeToRead} min read
@@ -34,7 +37,7 @@ const ArticleHero: React.FC<ArticleHeroProps> = ({ article, authors }) => {
       </Header>
       <HeroImage id="ArticleImage__Hero">
         {hasHeroImage ? (
-          <Image src={article.hero.full} />
+          <Image alt={article.title} src={article.hero.full} />
         ) : (
           <ImagePlaceholder />
         )}
@@ -45,7 +48,7 @@ const ArticleHero: React.FC<ArticleHeroProps> = ({ article, authors }) => {
 
 export default ArticleHero;
 
-const Hero = styled.div`
+const Hero = styled.div<IColorThemeProps>`
   ${p => mediaqueries.phablet`
     &::before {
       content: "";
@@ -110,7 +113,7 @@ const Header = styled.header`
   }
 `;
 
-const HeroHeading = styled(Headings.h1)`
+const HeroHeading = styled(Headings.h1)<IColorThemeProps>`
   font-size: 48px;
   font-family: ${p => p.theme.fonts.serif};
   margin-bottom: 25px;
@@ -127,7 +130,7 @@ const HeroHeading = styled(Headings.h1)`
   `}
 `;
 
-const HeroSubtitle = styled.div<{ hasCoAUthors: boolean }>`
+const HeroSubtitle = styled.div<{ hasCoAUthors: boolean } & IColorThemeProps>`
   position: relative;
   display: flex;
   font-size: 18px;

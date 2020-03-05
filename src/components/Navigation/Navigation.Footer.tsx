@@ -6,6 +6,8 @@ import Section from "@components/Section";
 import SocialLinks from "@components/SocialLinks";
 
 import mediaqueries from "@styles/media";
+import { IColorThemeProps, IColorTheme } from "@types";
+import { useThemeUI } from "theme-ui";
 
 const siteQuery = graphql`
   {
@@ -40,6 +42,8 @@ const siteQuery = graphql`
 const Footer: React.FC<{}> = () => {
   const results = useStaticQuery(siteQuery);
   const { name, social } = results.allSite.edges[0].node.siteMetadata;
+  const themeContext = useThemeUI();
+  const theme: IColorTheme = themeContext.theme as any;
 
   const copyrightDate = (() => {
     const { edges } = results.allMdx;
@@ -52,8 +56,8 @@ const Footer: React.FC<{}> = () => {
   return (
     <>
       <Section narrow>
-        <HoritzontalRule />
-        <FooterContainer>
+        <HoritzontalRule theme={theme} />
+        <FooterContainer theme={theme} >
           <FooterText>
             © {copyrightDate} {name}
           </FooterText>
@@ -74,7 +78,7 @@ const FooterContainer = styled.div`
   align-items: center;
   justify-content: space-between;
   padding-bottom: 80px;
-  color: ${p => p.theme.colors.grey};
+  color: ${(p: IColorThemeProps) => p.theme.colors.grey};
 
   ${mediaqueries.tablet`
     flex-direction: column;
@@ -89,7 +93,7 @@ const FooterContainer = styled.div`
 const HoritzontalRule = styled.div`
   position: relative;
   margin: 140px auto 50px;
-  border-bottom: 1px solid ${p => p.theme.colors.horizontalRule};
+  border-bottom: 1px solid ${(p: IColorThemeProps) => p.theme.colors.horizontalRule};
 
   ${mediaqueries.tablet`
     margin: 60px auto;
