@@ -5,6 +5,7 @@ import SEO from "@components/SEO";
 import HomeHero from "../sections/home/Home.Hero";
 
 function LandingPage() {
+  listenForCKeyPress();
   return (
     <Layout>
       <SEO/>
@@ -12,5 +13,15 @@ function LandingPage() {
     </Layout>
   );
 }
+
+const listenForCKeyPress = () => window.addEventListener("keydown", event => {
+  if (event.isComposing) {
+    return;
+  }
+  if (event.key === 'c') {
+    window.location.replace('mailto:uosoftwareclub@gmail.com')
+  }
+  // do something
+});
 
 export default LandingPage;
