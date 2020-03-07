@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from '@emotion/styled';
+import Lottie from 'react-lottie';
 
 import Section from '@components/Section';
 import Transitions from '@components/Transitions';
@@ -8,28 +9,37 @@ import media from '@styles/media';
 import { IColorThemeProps, IColorTheme } from '@types';
 import mediaqueries from '@styles/media';
 
-import TeamSpirit from '../../assets/team_spirit.svg';
+import animationData from '../../assets/17059-galacticons-animated.json';
 import { useThemeUI } from 'theme-ui';
 
 const HomeHero: React.FC = () => {
   const themeContext = useThemeUI();
   const theme: IColorTheme = themeContext.theme as any;
+  const lottieOptions = {
+    loop: true,
+    autoplay: true, 
+    animationData: animationData,
+    rendererSettings: {
+      preserveAspectRatio: 'xMidYMid slice'
+    }
+  };
+  console.log(animationData);
   return (
     <Section>
       <HeroContainer>
         <ContentContainer>
           <Transitions.CSS.FadeIn>
-            <MainText>
+            <MainText theme={theme}>
               UOSC, empowering open-source projects and competitive programming
               at University of Ottawa.
             </MainText>
-            <SubText>
+            <SubText theme={theme}>
               We will help you take your software development skills to the next
               level, and land that dream internship.
             </SubText>
-            <CalltoAction onClick={() => handleNavigatingToContact()}>
+            <CalltoAction theme={theme} onClick={() => handleNavigatingToContact()}>
               <span className="cta-desktop">
-                Press <KeyChar className="key-char">C</KeyChar> anywhere to
+                Press <KeyChar theme={theme} className="key-char">C</KeyChar> anywhere to
                 contact us
               </span>
               <span className="cta-mobile">Get In Touch <CalltoActionArrow color={theme.colors.primary} /></span>
@@ -37,7 +47,9 @@ const HomeHero: React.FC = () => {
           </Transitions.CSS.FadeIn>
         </ContentContainer>
         <HeroImageContainer>
-          <HeroImage src={TeamSpirit} alt="UOSC Team Spirit" />
+          <Lottie 
+            options={lottieOptions}
+          />
         </HeroImageContainer>
       </HeroContainer>
     </Section>

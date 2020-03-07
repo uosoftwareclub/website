@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from '@emotion/styled';
+import Lottie from 'react-lottie';
 
 import Section from '@components/Section';
 import Transitions from '@components/Transitions';
