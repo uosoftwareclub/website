@@ -118,6 +118,8 @@ const HeroContainer = styled.div`
   align-items: center;
   justify-content: space-between;
   padding: 110px 0;
+  margin-bottom: 50px;
+  height: calc(100vh - 180px);
   ${media.phablet`
     padding: 55px 0;
   `};

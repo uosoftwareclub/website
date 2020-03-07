@@ -3,6 +3,7 @@ import React from "react";
 import Layout from "@components/Layout";
 import SEO from "@components/SEO";
 import HomeHero from "../sections/home/Home.Hero";
+import HomeDescription from "../sections/home/Home.Description";
 
 function LandingPage() {
   listenForCKeyPress();
@@ -10,6 +11,7 @@ function LandingPage() {
     <Layout>
       <SEO/>
       <HomeHero/>
+      <HomeDescription />
     </Layout>
   );
 }
