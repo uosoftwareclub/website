@@ -47,6 +47,10 @@ const HomeHero: React.FC = () => {
 export default HomeHero;
 
 const handleNavigatingToContact = () => {
+  const windowGlobal = typeof window !== 'undefined' && window;
+  if (!windowGlobal) {
+    return;
+  }
   window.location.replace('mailto:uosoftwareclub@gmail.com');
 }
 
