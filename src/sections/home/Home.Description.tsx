@@ -42,7 +42,7 @@ export default HomeDescription;
 
 const DescriptionContainer = styled.div`
   width: 100%;
-  max-width: 1220px;
+  max-width: 100%;
   position: relative;
   display: grid;
   grid-template-columns: 144px 670px;
@@ -54,6 +54,19 @@ const DescriptionContainer = styled.div`
   p {
     margin-bottom: 60px;
   }
+
+  h2 {
+    margin-bottom: 15px;
+  }
+
+  ${media.desktop`
+    max-width: 100%;
+    padding: 55px 0;
+    display: block;
+    p {
+      margin-bottom: 30px;
+    }
+  `};
 `
 
 const TextContainer = styled.div<IColorThemeProps>`
@@ -62,4 +75,7 @@ const TextContainer = styled.div<IColorThemeProps>`
   color: ${(p) => p.theme.colors.primary};
   line-height: 1.3;
   margin-bottom: 2rem;
+  ${media.desktop`
+    font-size: 2rem;
+  `};
 `

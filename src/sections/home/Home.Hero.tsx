@@ -23,7 +23,6 @@ const HomeHero: React.FC = () => {
       preserveAspectRatio: 'xMidYMid slice'
     }
   };
-  console.log(animationData);
   return (
     <Section>
       <HeroContainer>
@@ -154,10 +153,6 @@ const HeroImageContainer = styled.div`
   ${mediaqueries.tablet`
     display: none;
   `}
-`;
-
-const HeroImage = styled.img`
-  max-width: 100%;
 `;
 
 const CalltoActionArrow = ({color = 'white'}) => (
