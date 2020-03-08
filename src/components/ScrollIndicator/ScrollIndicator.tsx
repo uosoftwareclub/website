@@ -79,8 +79,7 @@ const ScrollIndicator = ({
 export default ScrollIndicator
 
 const Frame = styled.div`
-  position: absolute;
-  bottom: 0;
+  position: relative;
   width: 1px;
   height: 90px;
   overflow: hidden;

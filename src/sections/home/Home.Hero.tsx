@@ -83,6 +83,9 @@ const MainText = styled.p<IColorThemeProps>`
   color: ${(p) => p.theme.colors.primary};
   line-height: 1.3;
   margin-bottom: 2rem;
+  ${media.phone`
+    font-size: 2rem;
+  `};
 `;
 
 const SubText = styled.p<IColorThemeProps>`
@@ -91,6 +94,9 @@ const SubText = styled.p<IColorThemeProps>`
   color: ${(p) => p.theme.colors.grey};
   line-height: 1.3;
   margin-bottom: 5rem;
+  ${media.phone`
+    font-size: 2rem;
+  `};
 `;
 
 const CalltoAction = styled.button<IColorThemeProps>`
@@ -113,16 +119,29 @@ const KeyChar = styled.span<IColorThemeProps>`
 `;
 
 const HeroContainer = styled.div`
+  height: calc(100vh - 230px);
+  min-height: 600px;
+  padding-top: 10;
+
+  position: relative;
   display: flex;
-  text-align: left;
   align-items: center;
   justify-content: space-between;
   padding: 110px 0;
-  margin-bottom: 50px;
-  height: calc(100vh - 180px);
+  
   ${media.phablet`
-    padding: 55px 0;
+    height: calc(100vh - 180px);
+    min-height: 100%;
+    padding: 0;
   `};
+
+  ${media.desktop_medium`
+    min-height: 360px;
+  `};
+
+  @media screen and (max-height: 800px) {
+    min-height: 360px;
+  }
 `;
 
 const ContentContainer = styled.div<IColorThemeProps>`
