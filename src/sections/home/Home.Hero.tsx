@@ -145,7 +145,7 @@ const ContentContainer = styled.div<IColorThemeProps>`
       }
     }
   }
-  ${media.phablet`
+  ${media.tablet`
     width: 100%;
     margin-right: 0;
     .cta-desktop {
