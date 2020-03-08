@@ -5,6 +5,7 @@ import { useColorMode, useThemeUI } from "theme-ui";
 
 import Section from "@components/Section";
 import Logo from "@components/Logo";
+import CuteMenuButton from '@components/Button/Button.Menu';
 
 import Icons from "@icons";
 import mediaqueries from "@styles/media";
@@ -14,6 +15,13 @@ import {
   getBreakpointFromTheme,
 } from "@utils";
 import { IColorThemeProps, IColorTheme } from "@types";
+
+const navLinks = [
+  { to: '/about', text: 'About' },
+  { to: '/labs', text: 'Labs' },
+  { to: '/stories', text: 'Stories' },
+  { to: '/contact', text: 'Contact' },
+]
 
 const DarkModeToggle: React.FC<{}> = () => {
   const [colorMode, setColorMode] = useColorMode();
@@ -77,11 +85,39 @@ const SharePageButton: React.FC<{}> = () => {
   );
 };
 
-const NavigationHeader: React.FC<{}> = () => {
+const MenuButton:React.FC<{opened: boolean, clickHandler: () => any}> = ({opened, clickHandler}) => {
+  return (
+    <CuteMenuButton 
+      state={opened ? 'open' : 'close'}
+      onClick={clickHandler}
+    />
+  )
+}
+
+const NavigationMenu = ({className}) => {
+  return (
+  <NavLinkContainer className={className}>
+    {navLinks.map(link => (
+      <NavLink 
+        key={link.to}
+        href={link.to}
+      >
+        {link.text}
+      </NavLink>
+    ))}
+  </NavLinkContainer>)
+}
+
+const NavigationHeader: React.FC<{showShareButton?: boolean}> = ({showShareButton = false}) => {
   const [showBackArrow, setShowBackArrow] = useState<boolean>(false);
   const [previousPath, setPreviousPath] = useState<string>("/");
+  const [opened, setOpened] = useState(false);
   const themeContext = useThemeUI();
   const theme: IColorTheme = themeContext.theme as any;
+
+  function menuClickHandler() {
+    setOpened(!opened);
+  }
 
   const [colorMode] = useColorMode();
   const fill = colorMode === "dark" ? "#fff" : "#000";
@@ -125,6 +161,11 @@ const NavigationHeader: React.FC<{}> = () => {
           <Hidden>Navigate back to the homepage</Hidden>
         </LogoLink>
         <NavControls>
+          <NavigationMenu className={opened ? 'show' : ''}/>
+          <MenuButton
+            opened={opened}
+            clickHandler={() => menuClickHandler()}
+          />
           {showBackArrow ? (
             <button
               onClick={() => navigate(previousPath)}
@@ -135,7 +176,7 @@ const NavigationHeader: React.FC<{}> = () => {
             </button>
           ) : (
             <>
-              <SharePageButton />
+              {showShareButton ? <SharePageButton /> : null}
               <DarkModeToggle />
             </>
           )}
@@ -146,6 +187,34 @@ const NavigationHeader: React.FC<{}> = () => {
 };
 
 export default NavigationHeader;
+
+const NavLinkContainer = styled.div`
+  opacity: 0;
+  visibility: hidden; 
+  display: flex;
+  align-items: center;
+  margin-right: 30px;
+  transition: all ease 0.25s;
+  margin-top: 15px;
+  &.show {
+    opacity: 1;
+    visibility: visible;
+    margin-top: 0;
+  }
+`;
+
+const NavLink = styled.a<IColorThemeProps>`
+  opacity: 0.5;
+
+  position: relative;
+  transition: opacity 0.3s ease;
+  margin-left: 30px;
+  color: ${p => p.theme.colors.primary};
+  
+  &:hover {
+    opacity: 1;
+  }
+`
 
 const BackArrowIconContainer = styled.div`
   transition: 0.2s transform var(--ease-out-quad);
