@@ -16,25 +16,25 @@ module.exports = {
     },
     social: [
       {
-        name: `twitter`,
-        url: `https://twitter.com/narative`,
+        name: `GitHub`,
+        url: `https://github.com/uosoftwareclub`,
       },
       {
-        name: `github`,
-        url: `https://github.com/narative`,
+        name: `Facebook`,
+        url: `https://facebook.com`,
       },
       {
-        name: `instagram`,
-        url: `https://instagram.com/narative.co`,
+        name: `Twitter`,
+        url: `https://twitter.com`,
       },
       {
-        name: `linkedin`,
-        url: `https://www.linkedin.com/company/narative/`,
+        name: `Instagram`,
+        url: `https://instagram.com`,
       },
       {
-        name: `dribbble`,
-        url: `https://dribbble.com/narativestudio`,
-      },
+        name: `LinkedIn`,
+        url: `https://www.linkedin.com`,
+      }
     ],
   },
   pathPrefix,
