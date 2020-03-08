@@ -4,6 +4,8 @@ import Lottie from 'react-lottie';
 
 import Section from '@components/Section';
 import Transitions from '@components/Transitions';
+import ScrollIndicator from '@components/ScrollIndicator';
+import ArrowButton from '@components/Button/Button.Arrow';
 
 import media from '@styles/media';
 import { IColorThemeProps, IColorTheme } from '@types';
@@ -41,7 +43,12 @@ const HomeHero: React.FC = () => {
                 Press <KeyChar theme={theme} className="key-char">C</KeyChar> anywhere to
                 contact us
               </span>
-              <span className="cta-mobile">Get In Touch <CalltoActionArrow color={theme.colors.primary} /></span>
+              <span className="cta-mobile">
+                <ArrowButton
+                  text="Get in touch"
+                  color={theme.colors.primary}
+                />
+              </span>
             </CalltoAction>
           </Transitions.CSS.FadeIn>
         </ContentContainer>
@@ -51,6 +58,7 @@ const HomeHero: React.FC = () => {
           />
         </HeroImageContainer>
       </HeroContainer>
+      <ScrollIndicator mode={'dark'} />
     </Section>
   );
 };
