@@ -20,7 +20,7 @@ const AuthorArticles: React.FC<AuthorArticlesProps> = ({ articles }) => {
 
 export default AuthorArticles;
 
-const AuthorArticlesContainer = styled.div`
+const AuthorArticlesContainer = styled.div<any>`
   background: linear-gradient(
     180deg,
     ${p => p.theme.colors.card} 0%,

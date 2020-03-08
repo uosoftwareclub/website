@@ -3,6 +3,7 @@ import styled from "@emotion/styled";
 import mediaqueries from "@styles/media";
 
 const Section = styled.section<{ narrow?: boolean }>`
+  position: relative;
   width: 100%;
   max-width: 1220px;
   margin: 0 auto;
