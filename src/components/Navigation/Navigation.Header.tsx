@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import styled from "@emotion/styled";
 import { Link, navigate, graphql, useStaticQuery } from "gatsby";
-import { useColorMode, useThemeUI } from "theme-ui";
+import { useColorMode, useThemeUI, Divider } from "theme-ui";
 
 import Section from "@components/Section";
 import Logo from "@components/Logo";
@@ -15,9 +15,10 @@ import {
   getBreakpointFromTheme,
 } from "@utils";
 import { IColorThemeProps, IColorTheme } from "@types";
+import Desktop from "@components/Breakpoints/Breakpoint.Desktop";
+import Mobile from "@components/Breakpoints/Breakpoint.Mobile";
 
 const navLinks = [
-  { to: '/about', text: 'About' },
   { to: '/labs', text: 'Labs' },
   { to: '/stories', text: 'Stories' },
   { to: '/contact', text: 'Contact' },
@@ -87,14 +88,24 @@ const SharePageButton: React.FC<{}> = () => {
 
 const MenuButton:React.FC<{opened: boolean, clickHandler: () => any}> = ({opened, clickHandler}) => {
   return (
-    <CuteMenuButton 
-      state={opened ? 'open' : 'close'}
-      onClick={clickHandler}
-    />
+    <>
+      <Desktop>
+        <CuteMenuButton 
+          state={opened ? 'open' : 'close'}
+          onClick={clickHandler}
+        />
+      </Desktop>
+      <Mobile>
+        <CuteMenuButton 
+          state={'closed'}
+          onClick={clickHandler}
+        />
+      </Mobile>
+    </>
   )
 }
 
-const NavigationMenu = ({className}) => {
+const DesktopNavigationMenu = ({className}) => {
   return (
   <NavLinkContainer className={className}>
     {navLinks.map(link => (
@@ -106,6 +117,23 @@ const NavigationMenu = ({className}) => {
       </NavLink>
     ))}
   </NavLinkContainer>)
+}
+
+const MobileNavigationMenu = ({className}) => {
+  return (
+    <MobileNavigationContainer className={className}>
+      <Section>
+        {navLinks.map(link => (
+          <a
+            key={link.to}
+            href={link.to}
+          >
+            {link.text}
+          </a>
+        ))}
+      </Section>
+    </MobileNavigationContainer>
+  )
 }
 
 const NavigationHeader: React.FC<{showShareButton?: boolean}> = ({showShareButton = false}) => {
@@ -142,51 +170,82 @@ const NavigationHeader: React.FC<{showShareButton?: boolean}> = ({showShareButto
   }, []);
 
   return (
-    <Section>
-      <NavContainer>
-        <LogoLink
-          theme={theme}
-          to={rootPath || basePath}
-          data-a11y="false"
-          title="Navigate back to the homepage"
-          aria-label="Navigate back to the homepage"
-          back={showBackArrow ? "true" : "false"}
-        >
-          {showBackArrow && (
-            <BackArrowIconContainer>
-              <Icons.ChevronLeft fill={fill} />
-            </BackArrowIconContainer>
-          )}
-          <Logo fill={fill} />
-          <Hidden>Navigate back to the homepage</Hidden>
-        </LogoLink>
-        <NavControls>
-          <NavigationMenu className={opened ? 'show' : ''}/>
-          <MenuButton
-            opened={opened}
-            clickHandler={() => menuClickHandler()}
-          />
-          {showBackArrow ? (
-            <button
-              onClick={() => navigate(previousPath)}
-              title="Navigate back to the homepage"
-              aria-label="Navigate back to the homepage"
-            >
-              <Icons.Ex fill={fill} />
-            </button>
-          ) : (
-            <>
-              {showShareButton ? <SharePageButton /> : null}
-              <DarkModeToggle />
-            </>
-          )}
-        </NavControls>
-      </NavContainer>
-    </Section>
+    <>
+      <Mobile>
+        <MobileNavigationMenu className={opened ? 'show' : ''}/>
+      </Mobile>
+      <Section>
+        <NavContainer>
+          <LogoLink
+            theme={theme}
+            to={rootPath || basePath}
+            data-a11y="false"
+            title="Navigate back to the homepage"
+            aria-label="Navigate back to the homepage"
+            back={showBackArrow ? "true" : "false"}
+          >
+            {showBackArrow && (
+              <BackArrowIconContainer>
+                <Icons.ChevronLeft fill={fill} />
+              </BackArrowIconContainer>
+            )}
+            <Logo fill={fill} />
+            <Hidden>Navigate back to the homepage</Hidden>
+          </LogoLink>
+          <NavControls>
+            <Desktop>
+              <DesktopNavigationMenu className={opened ? 'show' : ''}/>
+            </Desktop>
+            <MenuButton
+              opened={opened}
+              clickHandler={() => menuClickHandler()}
+            />
+            {showBackArrow ? (
+              <button
+                onClick={() => navigate(previousPath)}
+                title="Navigate back to the homepage"
+                aria-label="Navigate back to the homepage"
+              >
+                <Icons.Ex fill={fill} />
+              </button>
+            ) : (
+              <>
+                {showShareButton ? <SharePageButton /> : null}
+                <DarkModeToggle />
+              </>
+            )}
+          </NavControls>
+        </NavContainer>
+      </Section>
+    </>
   );
 };
 
 export default NavigationHeader;
+
+const MobileNavigationContainer = styled.nav<IColorThemeProps>`
+  background: ${p => p.theme.colors.background};
+  color: ${p => p.theme.colors.primary};
+  padding: 20px 0;
+  margin-top: -100px;
+  text-align: center;
+  transition: all ease 0.25s;
+  a {
+    color: ${p => p.theme.colors.primary};
+    margin: 0 auto 5px;
+    font-size: 1.3em;
+    padding: 15px;
+    display: inline-block;
+    opacity: 0.5;
+    &:hover {
+      opacity: 1;
+    }
+  }
+
+  &.show {
+    margin-top: 0;
+  }
+`;
 
 const NavLinkContainer = styled.div`
   opacity: 0;
@@ -207,12 +266,13 @@ const NavLink = styled.a<IColorThemeProps>`
   opacity: 0.5;
 
   position: relative;
-  transition: opacity 0.3s ease;
+  transition: all 0.3s ease;
   margin-left: 30px;
   color: ${p => p.theme.colors.primary};
   
   &:hover {
     opacity: 1;
+    transform: translateY(-2px);
   }
 `
 
