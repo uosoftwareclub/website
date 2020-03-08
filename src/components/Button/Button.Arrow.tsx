@@ -2,7 +2,7 @@ import React, { ReactNode } from 'react'
 import { keyframes } from '@emotion/core';
 import styled from '@emotion/styled';
 
-import { Spinner } from '@components/Button/Button'
+import { Spinner } from './button'
 import media from '@styles/media'
 
 interface ButtonArrowProps {

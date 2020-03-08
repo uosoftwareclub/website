@@ -12,10 +12,12 @@ import { IColorThemeProps, IColorTheme } from '@types';
 import mediaqueries from '@styles/media';
 
 import animationData from '../../assets/17059-galacticons-animated.json';
-import { useThemeUI } from 'theme-ui';
+import { useThemeUI, useColorMode } from 'theme-ui';
 
 const HomeHero: React.FC = () => {
   const themeContext = useThemeUI();
+  const [colorMode] = useColorMode();
+  const isDark = colorMode === `dark`;
   const theme: IColorTheme = themeContext.theme as any;
   const lottieOptions = {
     loop: true,
@@ -58,7 +60,7 @@ const HomeHero: React.FC = () => {
           />
         </HeroImageContainer>
       </HeroContainer>
-      <ScrollIndicator mode={'dark'} />
+      <ScrollIndicator mode={isDark ? 'light' : 'dark'} />
     </Section>
   );
 };
