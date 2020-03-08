@@ -13,16 +13,10 @@ const Section = styled.section<{ narrow?: boolean }>`
     max-width: 850px;
   `};
 
-  ${p =>
-    p.narrow
-      ? mediaqueries.tablet`
-          padding: 0 2rem;
-          max-width: 527px;
-        `
-      : mediaqueries.tablet`
-          padding: 0 4rem;
-          max-width: 567px;
-        `}
+  ${mediaqueries.tablet`
+    padding: 0 2rem;
+    max-width: 527px;
+  `};
 
   ${mediaqueries.phablet`
     max-width: 100%;

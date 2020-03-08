@@ -3,11 +3,21 @@ import styled from "@emotion/styled";
 import { graphql, useStaticQuery } from "gatsby";
 
 import Section from "@components/Section";
-import SocialLinks from "@components/SocialLinks";
 
 import mediaqueries from "@styles/media";
 import { IColorThemeProps, IColorTheme } from "@types";
 import { useThemeUI } from "theme-ui";
+import Headings from "@components/Headings";
+import Heartbeat from "@components/Animations/Heartbeat";
+
+interface Link {
+  name: string;
+  url: string;
+}
+interface Links extends Array<Link> {
+  name: string;
+  url: string;
+};
 
 const siteQuery = graphql`
   {
@@ -39,31 +49,101 @@ const siteQuery = graphql`
   }
 `;
 
+const renderSocialLinks = (links: Links): JSX.Element[] => {
+  const themeContext = useThemeUI();
+  const theme: IColorTheme = themeContext.theme as any;
+  return links.map((link: Link) => {
+    const { name, url } = link;
+    return (                
+      <li key={name}>
+        <Link
+          theme={theme}
+          href={url}
+          target="_blank"
+        >
+          { name }
+        </Link>
+      </li>
+    );
+  });
+}
+
 const Footer: React.FC<{}> = () => {
+  const currentYear: Number = new Date().getFullYear(); 
   const results = useStaticQuery(siteQuery);
   const { name, social } = results.allSite.edges[0].node.siteMetadata;
   const themeContext = useThemeUI();
   const theme: IColorTheme = themeContext.theme as any;
-
-  const copyrightDate = (() => {
-    const { edges } = results.allMdx;
-    const years = [0, edges.length - 1].map((edge) =>
-      new Date(edges[edge].node.frontmatter.date).getFullYear()
-    );
-    return years[0] === years[1] ? `${years[0]}` : `${years[0]}–${years[1]}`;
-  })();
-
   return (
     <>
       <Section narrow>
         <HoritzontalRule theme={theme} />
         <FooterContainer theme={theme} >
-          <FooterText>
-            © {copyrightDate} {name}
-          </FooterText>
-          <div>
-            <SocialLinks links={social} />
-          </div>
+          <FooterRow>
+            <FooterColumn className="quarter">
+              <Headings.h6>
+                Directory
+              </Headings.h6>
+              <Spacing/>
+              <LinkContainer>
+                <li>
+                  <Link 
+                    theme={theme}
+                    href="/"
+                  >
+                    Home
+                  </Link>
+                </li>
+                <li>
+                  <Link 
+                    theme={theme}
+                    href="/stories"
+                  >
+                    Stories
+                  </Link>
+                </li>
+                <li>
+                  <Link theme={theme}>
+                    Labs
+                  </Link>
+                </li>
+                <li>
+                  <Link theme={theme}>
+                    Contact
+                  </Link>
+                </li>
+              </LinkContainer>
+            </FooterColumn>
+            <FooterColumn className="quarter">
+              <Headings.h6>
+                Social
+              </Headings.h6>
+              <Spacing/>
+              <LinkContainer>
+                { renderSocialLinks(social) }
+              </LinkContainer>
+            </FooterColumn>
+            <FooterColumn className="half">
+              <Headings.h6>
+                General Enquiries
+              </Headings.h6>
+              <EmailText
+                theme={theme}
+                href="mailto:uosoftwareclub@gmail.com"
+              >
+                uosoftwareclub@gmail.com
+              </EmailText>
+            </FooterColumn>
+          </FooterRow>
+          <FooterRow>
+            <FooterText theme={theme}>
+              Built with 
+              <Heartbeat/>
+              by the front end team. Powered by ☕.
+              <br/>
+              © {currentYear} {name}.
+            </FooterText>
+          </FooterRow>
         </FooterContainer>
       </Section>
     </>
@@ -72,22 +152,59 @@ const Footer: React.FC<{}> = () => {
 
 export default Footer;
 
+const Spacing = styled.div`
+  height: 8px;
+`;
+
+const EmailText = styled.a`
+  font-size: 24px;
+  color: ${(p: IColorThemeProps) => p.theme.colors.grey};
+  &:hover {
+    color: ${p => p.theme.colors.primary};
+  }
+`;
+
 const FooterContainer = styled.div`
   position: relative;
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  align-items: left;
   justify-content: space-between;
   padding-bottom: 80px;
   color: ${(p: IColorThemeProps) => p.theme.colors.grey};
 
   ${mediaqueries.tablet`
-    flex-direction: column;
     padding-bottom: 100px;
   `}
 
   ${mediaqueries.phablet`
     padding-bottom: 50px;
   `}
+`;
+
+const FooterRow = styled.div`
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 40px;
+
+  ${mediaqueries.tablet`
+    margin-bottom: 24px;
+    flex-direction: column;
+  `}
+`;
+
+const FooterColumn = styled.div`
+  width: 100%;
+  margin-right: 8px;
+  ${mediaqueries.tablet`
+    margin-bottom: 16px;
+  `}
+  &.quarter {
+    flex: 1;
+  }
+  &.half {
+    flex: 2;
+  }
 `;
 
 const HoritzontalRule = styled.div`
@@ -98,18 +215,23 @@ const HoritzontalRule = styled.div`
   ${mediaqueries.tablet`
     margin: 60px auto;
   `}
-
-  ${mediaqueries.phablet`
-    display: none;
-  `}
 `;
 
 const FooterText = styled.div`
+  font-size: 12px;
+  color: ${(p: IColorThemeProps) => p.theme.colors.grey};
   ${mediaqueries.tablet`
     margin-bottom: 80px;
   `}
+`;
 
-  ${mediaqueries.phablet`
-    margin: 120px auto 100px;
-  `}
+const LinkContainer = styled.ul`
+  list-style-type: none;
+`;
+
+const Link = styled.a<IColorThemeProps>`
+  color: ${(p) => p.theme.colors.grey};
+  &:hover {
+    color: ${(p) => p.theme.colors.primary};
+  }
 `;
