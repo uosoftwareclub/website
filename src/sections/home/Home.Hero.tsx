@@ -40,18 +40,20 @@ const HomeHero: React.FC = () => {
               We will help you take your software development skills to the next
               level, and land that dream internship.
             </SubText>
-            <CalltoAction theme={theme} onClick={() => handleNavigatingToContact()}>
-              <span className="cta-desktop">
-                Press <KeyChar theme={theme} className="key-char">C</KeyChar> anywhere to
-                contact us
-              </span>
-              <span className="cta-mobile">
-                <ArrowButton
-                  text="Get in touch"
-                  color={theme.colors.primary}
-                />
-              </span>
+            <CalltoAction
+              theme={theme}
+              onClick={() => handleNavigatingToContact()}
+              className="cta-desktop"
+            >
+              Press <KeyChar theme={theme} className="key-char">C</KeyChar> anywhere to contact us
             </CalltoAction>
+            <span className="cta-mobile">
+              <ArrowButton
+                text="Get in touch"
+                onClick={() => handleNavigatingToContact()}
+                color={theme.colors.primary}
+              />
+            </span>
           </Transitions.CSS.FadeIn>
         </ContentContainer>
         <HeroImageContainer>
@@ -93,30 +95,7 @@ const SubText = styled.p<IColorThemeProps>`
 
 const CalltoAction = styled.button<IColorThemeProps>`
   font-weight: 700;
-  .cta-desktop {
-    color: ${(p) => p.theme.colors.grey};
-  }
-  .cta-mobile {
-    display: none;
-    color: ${(p) => p.theme.colors.primary};
-  }
-  &:hover {
-    .cta-desktop {
-      color: ${(p) => p.theme.colors.primary};
-      transition: all 0.25s ease 0s;
-      .key-char {
-        background: ${(p) => p.theme.colors.primary};
-      }
-    }
-  }
-  ${media.phablet`
-    .cta-desktop {
-      display: none;
-    }
-    .cta-mobile {
-      display: block;
-    }
-  `};
+  
 `;
 
 const KeyChar = styled.span<IColorThemeProps>`
@@ -146,13 +125,35 @@ const HeroContainer = styled.div`
   `};
 `;
 
-const ContentContainer = styled.div`
+const ContentContainer = styled.div<IColorThemeProps>`
   position: relative;
   width: 40%;
   margin-right: 50px;
+  .cta-desktop {
+    color: ${(p) => p.theme.colors.grey};
+  }
+  .cta-mobile {
+    display: none;
+    color: ${(p) => p.theme.colors.primary};
+  }
+  &:hover {
+    .cta-desktop {
+      color: ${(p) => p.theme.colors.primary};
+      transition: all 0.25s ease 0s;
+      .key-char {
+        background: ${(p) => p.theme.colors.primary};
+      }
+    }
+  }
   ${media.phablet`
     width: 100%;
     margin-right: 0;
+    .cta-desktop {
+      display: none;
+    }
+    .cta-mobile {
+      display: block;
+    }
   `};
 `;
 
