@@ -1,10 +1,14 @@
 import React from "react";
 import styled from "@emotion/styled";
 
-const Heartbeat: React.FC<{}> = () => {
+interface IHeartbeatProps {
+  value?: string,
+}
+
+const Heartbeat: React.FC<IHeartbeatProps> = ({ value='❤️'}) => {
   return (
     <Beat>
-      ❤️
+      { value }
     </Beat>
   );
 };

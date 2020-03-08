@@ -49,7 +49,7 @@ const siteQuery = graphql`
   }
 `;
 
-const renderSocialLinks = (links: Links) => {
+const renderSocialLinks = (links: Links): JSX.Element[] => {
   const themeContext = useThemeUI();
   const theme: IColorTheme = themeContext.theme as any;
   return links.map((link: Link) => {
@@ -229,9 +229,9 @@ const LinkContainer = styled.ul`
   list-style-type: none;
 `;
 
-const Link = styled.a`
-  color: ${(p: IColorThemeProps) => p.theme.colors.grey};
+const Link = styled.a<IColorThemeProps>`
+  color: ${(p) => p.theme.colors.grey};
   &:hover {
-    color: ${(p: IColorThemeProps) => p.theme.colors.primary};
+    color: ${(p) => p.theme.colors.primary};
   }
 `;
