@@ -84,6 +84,7 @@ const Footer: React.FC<{}> = () => {
               <Headings.h6>
                 Directory
               </Headings.h6>
+              <Spacing/>
               <LinkContainer>
                 <li>
                   <Link 
@@ -117,6 +118,7 @@ const Footer: React.FC<{}> = () => {
               <Headings.h6>
                 Social
               </Headings.h6>
+              <Spacing/>
               <LinkContainer>
                 { renderSocialLinks(social) }
               </LinkContainer>
@@ -149,6 +151,10 @@ const Footer: React.FC<{}> = () => {
 };
 
 export default Footer;
+
+const Spacing = styled.div`
+  height: 8px;
+`;
 
 const EmailText = styled.a`
   font-size: 24px;
