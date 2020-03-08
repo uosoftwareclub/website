@@ -33,8 +33,7 @@ const HomeHero: React.FC = () => {
         <ContentContainer>
           <Transitions.CSS.FadeIn>
             <MainText theme={theme}>
-              UOSC, empowering open-source projects and competitive programming
-              at University of Ottawa.
+              UOSC, empowering any student with a passion for software to achieve more.
             </MainText>
             <SubText theme={theme}>
               We will help you take your software development skills to the next

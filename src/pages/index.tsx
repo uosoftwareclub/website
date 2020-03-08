@@ -9,7 +9,11 @@ function LandingPage() {
   listenForCKeyPress();
   return (
     <Layout>
-      <SEO/>
+      <SEO
+        title="UOSC - University of Ottawa Software Club, Software Learning Amplified"
+        description="UOSC, empowering any student with a passion for software to achieve more. We will help you take your software development skills to the next level, and land that dream internship."
+        pathname="/"
+      />
       <HomeHero/>
       <HomeDescription />
     </Layout>
