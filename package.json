@@ -7,7 +7,8 @@
     "build": "gatsby build",
     "dev": "gatsby develop",
     "clean": "gatsby clean",
-    "proxy": "netlify-cms-proxy-server"
+    "proxy": "netlify-cms-proxy-server",
+    "lint": "eslint src"
   },
   "dependencies": {
     "@emotion/core": "^10.0.14",

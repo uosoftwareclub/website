@@ -20,7 +20,7 @@ function LandingPage() {
   );
 }
 
-const listenForCKeyPress = () => {
+const listenForCKeyPress = () => {1
   const windowGlobal = typeof window !== 'undefined' && window;
   if (!windowGlobal) {
     return;

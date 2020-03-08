@@ -30,7 +30,7 @@ const HomeHero: React.FC = () => {
   return (
     <Section>
       <HeroContainer>
-        <ContentContainer>
+        <ContentContainer theme={theme}>
           <Transitions.CSS.FadeIn>
             <MainText theme={theme}>
               UOSC, empowering any student with a passion for software to achieve more.

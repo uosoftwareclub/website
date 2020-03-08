@@ -13,11 +13,13 @@ import mediaqueries from '@styles/media';
 import { useThemeUI } from 'theme-ui';
 
 const HomeDescription: React.FC = () => {
+  const themeContext = useThemeUI();
+  const theme: IColorTheme = themeContext.theme as any;
   return (
     <Section>
       <DescriptionContainer>
         <Heading.h2>The UOSC Approach</Heading.h2>
-        <TextContainer>
+        <TextContainer theme={theme}>
           <p>
             In the vast and growing world of software, 
             it is vital to be surrounded by like minded individuals in the field.

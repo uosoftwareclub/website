@@ -119,3 +119,8 @@ export interface IColorThemeProps {
   theme: IColorTheme;
   isDark?: boolean;
 }
+
+declare module "*.svg" {
+  const content: string;
+  export default content;
+}
