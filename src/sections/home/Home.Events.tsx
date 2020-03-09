@@ -5,7 +5,7 @@ import Section from '@components/Section';
 import VizSensor from 'react-visibility-sensor';
 import { IColorThemeProps } from '@types';
 
-const items = ['At UOSC, You will', 'Build, Learn', 'Compete, and Grow']
+const items = ['At UOSC, You will', 'Build, Learn,', 'Compete, and Grow']
 const config = { mass: 5, tension: 2000, friction: 200 }
 
 const HomeBigDisplay = () => {

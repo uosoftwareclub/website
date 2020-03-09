@@ -64,6 +64,7 @@ const DescriptionContainer = styled.div`
   grid-template-columns: 144px 670px;
   z-index: 2;
   margin: 0px auto;
+  margin-bottom: 50px;
   padding: 100px 4rem 30px;
   background: transparent;
   grid-column-gap: 128px;
