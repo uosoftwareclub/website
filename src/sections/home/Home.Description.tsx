@@ -18,7 +18,12 @@ const HomeDescription: React.FC = () => {
   return (
     <Section>
       <DescriptionContainer>
-        <Heading.h2>The UOSC Approach</Heading.h2>
+        <div>
+          <Sticky>
+            <Heading.h2>The UOSC Approach</Heading.h2>
+          </Sticky>
+          
+        </div>
         <TextContainer theme={theme}>
           <p>
             In the vast and growing world of software, 
@@ -41,6 +46,15 @@ const HomeDescription: React.FC = () => {
 }
 
 export default HomeDescription;
+
+const Sticky = styled.div`
+  position: sticky;
+  top: 15px;
+
+  ${mediaqueries.phablet`
+    position: relative;
+  `}
+`
 
 const DescriptionContainer = styled.div`
   width: 100%;

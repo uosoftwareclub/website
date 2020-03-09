@@ -4,13 +4,12 @@ import Layout from "@components/Layout";
 import SEO from "@components/SEO";
 import HomeHero from "../sections/home/Home.Hero";
 import HomeDescription from "../sections/home/Home.Description";
+import HomeBigDisplay from "../sections/home/Home.Events";
 
 function LandingPage() {
   useEffect(() => {
     const event = listenForCKeyPress;
-
     window.addEventListener('keydown', event);
-
     return () => window.removeEventListener('keydown', event);
   })
   
@@ -23,6 +22,7 @@ function LandingPage() {
       />
       <HomeHero/>
       <HomeDescription />
+      <HomeBigDisplay />
     </Layout>
   );
 }
