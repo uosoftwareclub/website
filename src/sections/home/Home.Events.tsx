@@ -4,6 +4,7 @@ import { useTrail, animated } from 'react-spring'
 import Section from '@components/Section';
 import VizSensor from 'react-visibility-sensor';
 import { IColorThemeProps } from '@types';
+import mediaqueries from '@styles/media';
 
 const items = ['At UOSC, You will', 'Build, Learn,', 'Compete, and Grow']
 const config = { mass: 5, tension: 2000, friction: 200 }
@@ -71,6 +72,12 @@ const TrailsContainer = styled.div`
   .trails-text > div {
     overflow: hidden;
   }
+
+  ${mediaqueries.phablet`
+    .trails-text {
+      font-size: 2em;
+    }
+  `}
 `
 
 const HeadingBackground = styled.div`
