@@ -1,12 +1,18 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 import Layout from "@components/Layout";
 import SEO from "@components/SEO";
 import HomeHero from "../sections/home/Home.Hero";
 import HomeDescription from "../sections/home/Home.Description";
+import HomeBigDisplay from "../sections/home/Home.Events";
 
 function LandingPage() {
-  listenForCKeyPress();
+  useEffect(() => {
+    const event = listenForCKeyPress;
+    window.addEventListener('keydown', event);
+    return () => window.removeEventListener('keydown', event);
+  })
+  
   return (
     <Layout>
       <SEO
@@ -16,23 +22,18 @@ function LandingPage() {
       />
       <HomeHero/>
       <HomeDescription />
+      <HomeBigDisplay />
     </Layout>
   );
 }
 
-const listenForCKeyPress = () => {1
-  const windowGlobal = typeof window !== 'undefined' && window;
-  if (!windowGlobal) {
+const listenForCKeyPress = (event: KeyboardEvent) => {
+  if (event.isComposing || event.ctrlKey || event.altKey || event.shiftKey) {
     return;
   }
-  window.addEventListener("keydown", event => {
-    if (event.isComposing) {
-      return;
-    }
-    if (event.key === 'c') {
-      window?.location.replace('mailto:uosoftwareclub@gmail.com')
-    }
-    // do something
-  });
+  if (event.key === 'c') {
+    window?.location.replace('mailto:uosoftwareclub@gmail.com')
+  }
+  // do something
 }
 export default LandingPage;
