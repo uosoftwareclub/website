@@ -24,9 +24,14 @@ const HeroService = () => {
             <Headings.h3>A Place to Build</Headings.h3>
             <p>
               At UOSC, we strive to deliver high quality open source projects. From beautiful web design to
-              full-stack web development, from machine learning to blockchain and crypto currency, we cover it
-              all. Contributing to UOSC hosted projects means using the latest and greatest technologies like
-              ReactJS, MongoDB, and AWS. At UOSC Open Source you can build you dream, learn from the best.
+              full-stack web development, we cover it all.
+            </p>
+            <p>
+              Contributing to UOSC hosted projects means using the latest and greatest technologies like
+              ReactJS, MongoDB, and AWS.
+            </p>
+            <p>
+              At UOSC Open Source you can build you dream, learn from the best. Come checkout our projects now!
             </p>
             <ArrowButton
               as={Link}
@@ -66,21 +71,24 @@ const ServiceContainer = styled.div`
 const ServiceDescriptionContainer = styled.div<any>`
   h3 {
     font-size: 3em;
+    margin-bottom: 20px;
   }
   p {
     margin-bottom: 20px;
+    font-size: 1.2em;
   }
   width: 40%;
   z-index: 1;
   margin-right: -5vw;
-  margin-top: -300px;
+  margin-top: -200px;
   color: ${p => p.theme.colors.primary}
 `
 
 const ServiceImageContainer = styled.div`
   width: 40%;
-  /* margin-right: -20vw; */
+  /* box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23); */
   img {
     max-width: 100%;
   }
+  
 `
