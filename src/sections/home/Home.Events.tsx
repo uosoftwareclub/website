@@ -56,13 +56,14 @@ const TrailsContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-bottom: 200px;
   .trails-text {
     position: relative;
     width: 100%;
     height: 90px;
     line-height: 90px;
-    color: palevioletred;
-    font-family: ${(p) => p.theme.fonts.serif};
+    color: ${(p) => p.theme.colors.primary};;
+    font-family: ${(p) => p.theme.fonts.sanserif};
     font-size: 5em;
     font-weight: 700;
     will-change: transform, opacity;
@@ -79,35 +80,3 @@ const TrailsContainer = styled.div`
     }
   `}
 `
-
-const HeadingBackground = styled.div`
-  position: relative;
-  -webkit-background-clip: text;
-  background-clip: text;
-  background-repeat: no-repeat;
-  background-image: linear-gradient(
-    92.62deg,
-    #bfa8a7 0.99%,
-    #cfd3de 34.85%,
-    #adbbd2 67.46%,
-    #9facac 79.92%,
-    #e0dbce 93.48%
-  );
-  color: transparent !important;
-  max-width: 800px;
-  padding-bottom: 400px;
-  margin-bottom: -250px;
-  z-index: 4;
-`;
-
-const LargeHeading = styled.p<IColorThemeProps>`
-  display: inline;
-  font-weight: 700;
-  font-size: 70px;
-  letter-spacing: -0.5px;
-  line-height: 1.2;
-  font-family: ${(p) => p.theme.fonts.serif};
-  background: transparent;
-  color: transparent;
-  padding-bottom: 200px;
-`;
