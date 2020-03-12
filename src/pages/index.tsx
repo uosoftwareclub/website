@@ -5,7 +5,8 @@ import SEO from "@components/SEO";
 import HomeHero from "../sections/home/Home.Hero";
 import HomeDescription from "../sections/home/Home.Description";
 import HomeBigDisplay from "../sections/home/Home.Events";
-import HeroService from "../sections/home/Home.Services";
+import HomeService from "../sections/home/Home.Services";
+import HomeEnding from "../sections/home/Home.Ending";
 
 function LandingPage() {
   useEffect(() => {
@@ -24,7 +25,8 @@ function LandingPage() {
       <HomeHero/>
       <HomeDescription />
       <HomeBigDisplay />
-      <HeroService />
+      <HomeService />
+      <HomeEnding />
     </Layout>
   );
 }

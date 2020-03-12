@@ -74,6 +74,12 @@ const TrailsContainer = styled.div`
     overflow: hidden;
   }
 
+  ${mediaqueries.desktop`
+    .trails-text {
+      font-size: 3em;
+    }
+  `}
+
   ${mediaqueries.phablet`
     .trails-text {
       font-size: 2em;

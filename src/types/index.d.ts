@@ -116,7 +116,7 @@ export interface IColorTheme {
 }
 
 export interface IColorThemeProps {
-  theme: IColorTheme;
+  theme?: IColorTheme;
   isDark?: boolean;
 }
 

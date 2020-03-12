@@ -5,10 +5,12 @@ import mediaqueries from '@styles/media';
 
 import buildImage from '../../assets/build.jpg';
 import buildImageDark from '../../assets/build_dark.jpg';
+import competeImage from '../../assets/compete.jpg';
+import competeImageDark from '../../assets/compete_d.jpg';
 import Headings from '@components/Headings';
 import ArrowButton from '@components/Button/Button.Arrow';
 import { useColorMode, useThemeUI } from 'theme-ui';
-import { IColorTheme } from '@types';
+import { IColorTheme, IColorThemeProps } from '@types';
 import { Link } from 'gatsby';
 
 const HeroService = () => {
@@ -21,7 +23,7 @@ const HeroService = () => {
       <Section>
         <ServiceContainer>
           <ServiceDescriptionContainer>
-            <Headings.h3>A Place to Build</Headings.h3>
+            <Headings.h3>We 💖 Open Source</Headings.h3>
             <p>
               At UOSC, we strive to deliver high quality open source projects. From beautiful web design to
               full-stack web development, we cover it all.
@@ -49,7 +51,30 @@ const HeroService = () => {
           )}
           </ServiceImageContainer>          
         </ServiceContainer>
-        
+      </Section>
+      <Section>
+        <ServiceContainer>
+          <ServiceImageContainer>
+          {isDark ? (
+            <img src={competeImageDark} className="half"/>
+          ) : (
+            <img src={competeImage} className="half"/>
+          )}
+          </ServiceImageContainer>
+          <ServiceDescriptionContainerMirrored>
+            <Headings.h3>Competition Time</Headings.h3>
+            <p>
+              PLACE HOLDER TEXT FOR COMEPTITION
+            </p>
+            <ArrowButton
+              as={Link}
+              to="leaderboard"
+              text="Leaderboard"
+              // onClick={() => handleNavigatingToContact()}
+              color={theme.colors.primary}
+            />
+          </ServiceDescriptionContainerMirrored>
+        </ServiceContainer>
       </Section>
     </>
   );
@@ -61,14 +86,54 @@ const ServiceContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  ${mediaqueries.phablet`
-    .trails-text {
-      font-size: 2em;
-    }
+  margin-bottom: 200px;
+  ${mediaqueries.tablet`
+    margin-bottom: 100px;
   `}
 `
 
-const ServiceDescriptionContainer = styled.div<any>`
+const ServiceDescriptionContainerMirrored = styled.div<IColorThemeProps>`
+  h3 {
+    font-size: 3em;
+    margin-bottom: 20px;
+    text-align: right;
+  }
+  p {
+    margin-bottom: 15px;
+    font-size: 1.2em;
+    text-align: right;
+  }
+  width: 40%;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  margin-left: -5vw;
+  margin-top: -200px;
+  color: ${p => p.theme.colors.primary};
+  ${mediaqueries.desktop`
+    margin-top: 0;
+    width: 60%;
+  `}
+
+  ${mediaqueries.tablet`
+    width: 100%;
+    display: block;
+    h3 {
+      font-size: 2em;
+      margin-bottom: 20px;
+      text-align: left;
+    }
+    p {
+      text-align: left;
+    }
+    margin-left: 0;
+    margin-top: 0;
+  `}
+`
+
+
+const ServiceDescriptionContainer = styled.div<IColorThemeProps>`
   h3 {
     font-size: 3em;
     margin-bottom: 20px;
@@ -81,14 +146,36 @@ const ServiceDescriptionContainer = styled.div<any>`
   z-index: 1;
   margin-right: -5vw;
   margin-top: -200px;
-  color: ${p => p.theme.colors.primary}
+  color: ${p => p.theme.colors.primary};
+  ${mediaqueries.desktop`
+    margin-top: 0;
+    width: 60%;
+  `}
+
+  ${mediaqueries.tablet`
+    width: 100%;
+    margin-top: 0;
+    h3 {
+      font-size: 2em;
+      margin-bottom: 20px;
+    }
+    margin-left: 0;
+    margin-top: 0;
+  `}
 `
 
 const ServiceImageContainer = styled.div`
   width: 40%;
+  
+  .half {
+    opacity: 0.5;
+  }
+
   /* box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23); */
   img {
     max-width: 100%;
   }
-  
+  ${mediaqueries.tablet`
+    display: none;
+  `}
 `
