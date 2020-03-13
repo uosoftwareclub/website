@@ -21,7 +21,9 @@ import ChevronLeft from './ui/ChevronLeft.Icon';
 import Copied from './ui/Copied.Icon';
 import Copy from './ui/Copy.Icon';
 import Ex from './ui/Ex.Icon';
+import ExternalLink from './ui/ExternalLink.Icon';
 import Link from './ui/Link.Icon';
+import Medal from './ui/Medal.Icon';
 import ToggleOpen from './ui/ToggleOpen.Icon';
 import ToggleClose from './ui/ToggleClose.Icon';
 import Rows from './ui/Rows.Icon';
@@ -49,7 +51,9 @@ export default {
   Copied,
   Copy,
   Ex,
+  ExternalLink,
   Link,
+  Medal,
   ToggleClose,
   ToggleOpen,
   Rows,
