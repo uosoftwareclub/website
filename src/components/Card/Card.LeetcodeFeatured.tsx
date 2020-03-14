@@ -7,19 +7,40 @@ import Headings from '@components/Headings';
 import Icons from '@icons';
 import Graph from '@components/Graph';
 
+const medalColors = {
+  gold: '#d4af37',
+  silver: '#aaa9ad',
+  bronze: '#cd7f32',
+}
+
+const getMedalColor = (position: number): string => {
+  switch(position) {
+    case(1):
+      return medalColors.gold;
+    case(2):
+      return medalColors.silver;
+    case(3):
+      return medalColors.bronze;
+    default:
+      return;
+  }
+};
+
 interface LeetcodeFeaturedProps {
   username: string,
   eloData: {
     x: number,
     y: number,
   }[],
-  medalColor?: string,
+  position: number,
 }
 
-const LeetcodeFeatured: React.FC<LeetcodeFeaturedProps> = ({ username, eloData, medalColor }) => {
-  console.log(eloData);
+const LeetcodeFeatured: React.FC<LeetcodeFeaturedProps> = ({ username, eloData, position }) => {
   const curElo: number = eloData[eloData.length - 1].y;
   const leetcodeExternalLink = `https://leetcode.com/${username}/`;
+  const medalColor = getMedalColor(position);
+  const title = medalColor ? username : `${position}. ${username}`;
+
   return (
     <>
       <CardContainer>
@@ -31,7 +52,7 @@ const LeetcodeFeatured: React.FC<LeetcodeFeaturedProps> = ({ username, eloData, 
               </MedalContainer>
             }
             <Headings.h3>
-              { username }
+              { title }
             </Headings.h3>
             <LinkContainer>
               <a
@@ -59,18 +80,14 @@ export default LeetcodeFeatured;
 const CardContainer = styled.div<IColorThemeProps>`
   display: flex;
   flex-direction: column;
-  flex: 1;
+  flex-grow: 1;
   background: ${p => p.theme.colors.card};
   border-radius: 8px;
   padding: 16px 24px;
   position: relative;
-  max-width: 32%;
+  width: 100%;
   min-height: 160px;
   box-shadow: 0px 3px 15px rgba(0,0,0,0.2);
-  ${mediaqueries.desktop`
-    max-width: 100%;
-    margin-bottom: 16px;
-  `};
 `;
 
 const ELOText = styled.p<IColorThemeProps>`

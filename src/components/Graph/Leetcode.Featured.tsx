@@ -30,14 +30,6 @@ const LeetcodeFeatured: React.FC<VictoryLeetcodeProps> = ({ eloData }) => {
   const theme: IColorTheme = themeContext.theme as any;
   return (
     <>
-      <svg style={{ height: 0 }}>
-        <defs>
-          <linearGradient id="myGradient" x1="0" x2="0" y1="0" y2="1">
-            <stop offset="0%" stopColor={theme.colors.grey}/>
-            <stop offset="100%" stopColor={theme.colors.card}/>
-          </linearGradient>
-        </defs>
-      </svg>
       <VictoryArea
         interpolation="natural"
         containerComponent={
@@ -76,7 +68,7 @@ const LeetcodeFeatured: React.FC<VictoryLeetcodeProps> = ({ eloData }) => {
         height={160}
         style={{
           data: {
-            fill: "url(#myGradient)", fillOpacity: 0.5, stroke: "grey", strokeWidth: 3
+            fill: "url(#leetcodeFeaturedGradient)", fillOpacity: 0.5, stroke: "grey", strokeWidth: 3
           },
         }}
         data={eloData}
