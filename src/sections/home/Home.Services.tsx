@@ -33,7 +33,7 @@ const HeroService = () => {
               ReactJS, MongoDB, and AWS.
             </p>
             <p>
-              At UOSC Open Source you can build you dream, learn from the best. Come checkout our projects now!
+              At UOSC Open Source, you can build you dream, and gain valuable experience. Come checkout our projects now!
             </p>
             <ArrowButton
               as={Link}
@@ -62,9 +62,16 @@ const HeroService = () => {
           )}
           </ServiceImageContainer>
           <ServiceDescriptionContainerMirrored>
-            <Headings.h3>Competition Time</Headings.h3>
+            <Headings.h3>Compete &amp; Grow</Headings.h3>
             <p>
-              PLACE HOLDER TEXT FOR COMEPTITION
+              At UOSC, we believe in having healthy competition. Every Saturday we host in person leetcode competitions
+              for members to compete and grow together.
+            </p>
+            <p>
+              We provide free interview prep and resume roast and other mentorship services to assist our members. 
+            </p>
+            <p>
+              At UOSC Competition, you can compete, and learn from the best. Checkout our member leaderboard now!
             </p>
             <ArrowButton
               as={Link}

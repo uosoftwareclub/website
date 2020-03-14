@@ -2,12 +2,10 @@ import React, { useState, useEffect } from 'react';
 import styled from '@emotion/styled';
 import { useTrail, animated } from 'react-spring'
 import Section from '@components/Section';
-import NavigationHeader from '@components/Navigation/Navigation.Header';
 import VizSensor from 'react-visibility-sensor';
 import { IColorThemeProps } from '@types';
 import mediaqueries from '@styles/media';
 import Button from '@components/Button';
-import { Link } from 'gatsby';
 
 
 const items = ['Together, let\'s discover what', 'you are truly capable of. ✌']
@@ -44,14 +42,14 @@ const HomeEnding = () => {
               </div>
             </TrailsContainer>
           </VizSensor>
-          <Link
-            to="contact"
+          <a
+            href="mailto:uosoftwareclub@gmail.com"
           >
             <Button
               text="Contact Us"
               type="button"
             />
-          </Link>
+          </a>
           
         </Section>
       </EndingContainer>
@@ -82,8 +80,8 @@ const TrailsContainer = styled.div<IColorThemeProps>`
     width: 100%;
     height: 90px;
     line-height: 90px;
-    color: ${(p) => p.theme.colors.primary};;
-    font-family: ${(p) => p.theme.fonts.sanserif};
+    color: ${(p) => p.theme.colors.primary};
+    font-family: ${(p) => p.theme.fonts.sanSerif};
     font-size: 5em;
     font-weight: 700;
     will-change: transform, opacity;
