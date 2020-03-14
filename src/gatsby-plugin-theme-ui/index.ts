@@ -16,7 +16,7 @@ const breakpoints = [
 const fonts = {
   serif: "'Merriweather', Georgia, Serif",
   sansSerif:
-    "'Sen', 'SF Pro Display', '-apple-system', 'BlinkMacSystemFont', 'San Francisco', 'Helvetica Neue', 'Helvetica', 'Ubuntu', 'Roboto', 'Noto', 'Segoe UI', 'Arial', sans-serif",
+    "'SF Pro Display', '-apple-system', 'BlinkMacSystemFont', 'San Francisco', 'Sen', 'Helvetica Neue', 'Helvetica', 'Ubuntu', 'Roboto', 'Noto', 'Segoe UI', 'Arial', sans-serif",
   monospace: `"Operator Mono", Consolas, Menlo, Monaco, source-code-pro, Courier New, monospace`,
 };
 
