@@ -11,7 +11,7 @@ import media from '@styles/media';
 import { IColorThemeProps, IColorTheme } from '@types';
 import mediaqueries from '@styles/media';
 
-import animationData from '../../assets/17059-galacticons-animated.json';
+import animationData from '../../assets/teamwork.json';
 import { useThemeUI, useColorMode } from 'theme-ui';
 
 const HomeHero: React.FC = () => {
@@ -58,6 +58,7 @@ const HomeHero: React.FC = () => {
         <HeroImageContainer>
           <Lottie 
             options={lottieOptions}
+            isClickToPauseDisabled
           />
         </HeroImageContainer>
       </HeroContainer>
@@ -77,8 +78,8 @@ const handleNavigatingToContact = () => {
 }
 
 const MainText = styled.p<IColorThemeProps>`
-  font-size: 2.5rem;
-  font-weight: 400;
+  font-size: 3rem;
+  font-weight: 700;
   color: ${(p) => p.theme.colors.primary};
   line-height: 1.3;
   margin-bottom: 2rem;
@@ -100,7 +101,6 @@ const SubText = styled.p<IColorThemeProps>`
 
 const CalltoAction = styled.button<IColorThemeProps>`
   font-weight: 700;
-  
 `;
 
 const KeyChar = styled.span<IColorThemeProps>`
@@ -177,8 +177,7 @@ const ContentContainer = styled.div<IColorThemeProps>`
 
 const HeroImageContainer = styled.div`
   position: relative;
-  width: 45%;
-
+  width: 60%;
   ${mediaqueries.tablet`
     display: none;
   `}

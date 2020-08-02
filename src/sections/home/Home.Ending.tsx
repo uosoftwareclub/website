@@ -50,10 +50,8 @@ const HomeEnding = () => {
               type="button"
             />
           </a>
-          
         </Section>
       </EndingContainer>
-    
   );
 };
 
@@ -64,6 +62,7 @@ const EndingContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  padding-top: 60px;
 `
 
 const TrailsContainer = styled.div<IColorThemeProps>`
