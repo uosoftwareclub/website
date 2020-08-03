@@ -22,7 +22,6 @@ const HomeDescription: React.FC = () => {
           <Sticky>
             <Heading.h2>The UOSC Approach</Heading.h2>
           </Sticky>
-          
         </div>
         <TextContainer theme={theme}>
           <p>
@@ -40,7 +39,6 @@ const HomeDescription: React.FC = () => {
           </p>
         </TextContainer>
       </DescriptionContainer>
-      
     </Section>
   )
 }
@@ -64,18 +62,18 @@ const DescriptionContainer = styled.div`
   grid-template-columns: 144px 670px;
   z-index: 2;
   margin: 0px auto;
-  margin-bottom: 50px;
   padding: 100px 4rem 30px;
   background: transparent;
   grid-column-gap: 128px;
   p {
     margin-bottom: 60px;
   }
-
+  p:last-child {
+    margin-bottom: 0px;
+  }
   h2 {
     margin-bottom: 15px;
   }
-
   ${media.desktop`
     max-width: 100%;
     padding: 55px 0;
@@ -91,7 +89,6 @@ const TextContainer = styled.div<IColorThemeProps>`
   font-weight: 400;
   color: ${(p) => p.theme.colors.primary};
   line-height: 1.3;
-  margin-bottom: 2rem;
   ${media.desktop`
     font-size: 2rem;
   `};

@@ -29,7 +29,6 @@ const ArticlesPage: Template = ({ location, pageContext }) => {
           <Paginator {...pageContext} />
         </AuthorPaginator>
       </Section>
-      <AuthorsGradient />
     </Layout>
   );
 }
