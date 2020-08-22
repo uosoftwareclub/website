@@ -8,7 +8,7 @@ const slugify = require('slugify');
 module.exports = ({ node, actions, getNode, createNodeId }, themeOptions) => {
   const { createNode, createNodeField, createParentChildLink } = actions;
   const contentPath = themeOptions.contentPath || 'content/posts';
-  const basePath = themeOptions.basePath || '/';
+  const basePath = themeOptions.basePath || '/stories';
   const articlePermalinkFormat = themeOptions.articlePermalinkFormat || ':slug';
 
   // Create source field (according to contentPath)
@@ -26,7 +26,7 @@ module.exports = ({ node, actions, getNode, createNodeId }, themeOptions) => {
       slug,
     };
 
-    const permalink = articlePermalinkFormat.replace(/(:[a-z_]+)/g, match => {
+    const permalink = articlePermalinkFormat.replace(/(:[a-z_]+)/g, (match) => {
       const key = match.substr(1);
       if (permalinkData.hasOwnProperty(key)) {
         return permalinkData[key];
