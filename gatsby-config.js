@@ -1,5 +1,4 @@
-const
-  contentAuthors = 'content/authors',
+const contentAuthors = 'content/authors',
   contentPosts = 'content/posts',
   pathPrefix = '',
   { local, contentful } = { local: true, contentful: false };
@@ -34,7 +33,7 @@ module.exports = {
       {
         name: `LinkedIn`,
         url: `https://www.linkedin.com`,
-      }
+      },
     ],
   },
   pathPrefix,
@@ -100,8 +99,8 @@ module.exports = {
             serialize: ({ query: { site, allArticle, allContentfulPost } }) => {
               if (local && !contentful) {
                 return allArticle.edges
-                  .filter(edge => !edge.node.secret)
-                  .map(edge => {
+                  .filter((edge) => !edge.node.secret)
+                  .map((edge) => {
                     return {
                       ...edge.node,
                       description: edge.node.excerpt,
@@ -114,8 +113,8 @@ module.exports = {
                   });
               } else if (!local && contentful) {
                 return allContentfulPost.edges
-                  .filter(edge => !edge.node.secret)
-                  .map(edge => {
+                  .filter((edge) => !edge.node.secret)
+                  .map((edge) => {
                     return {
                       ...edge.node,
                       description: edge.node.excerpt,
@@ -129,8 +128,8 @@ module.exports = {
               } else {
                 const allArticlesData = { ...allArticle, ...allContentfulPost };
                 return allArticlesData.edges
-                  .filter(edge => !edge.node.secret)
-                  .map(edge => {
+                  .filter((edge) => !edge.node.secret)
+                  .map((edge) => {
                     return {
                       ...edge.node,
                       description: edge.node.excerpt,
@@ -247,12 +246,12 @@ module.exports = {
             resolve: `@raae/gatsby-remark-oembed`,
             options: {
               providers: {
-                include: ["Instagram"]
-              }
-            }
+                include: ['Instagram'],
+              },
+            },
           },
           {
-            resolve: "gatsby-remark-embed-video",
+            resolve: 'gatsby-remark-embed-video',
             options: {
               width: 680,
               ratio: 1.77, // Optional: Defaults to 16/9 = 1.77
@@ -262,10 +261,11 @@ module.exports = {
               urlOverrides: [
                 {
                   id: 'youtube',
-                  embedURL: (videoId) => `https://www.youtube-nocookie.com/embed/${videoId}`,
-                }
-              ] //Optional: Override URL of a service provider, e.g to enable youtube-nocookie support
-            }
+                  embedURL: (videoId) =>
+                    `https://www.youtube-nocookie.com/embed/${videoId}`,
+                },
+              ], //Optional: Override URL of a service provider, e.g to enable youtube-nocookie support
+            },
           },
           { resolve: `gatsby-remark-copy-linked-files` },
           { resolve: `gatsby-remark-numbered-footnotes` },
