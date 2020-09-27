@@ -129,9 +129,9 @@ const Footer: React.FC<{}> = () => {
               </Headings.h6>
               <EmailText
                 theme={theme}
-                href="mailto:uosoftwareclub@gmail.com"
+                href="mailto:hello@uosc.io"
               >
-                uosoftwareclub@gmail.com
+                hello@uosc.io
               </EmailText>
             </FooterColumn>
           </FooterRow>
