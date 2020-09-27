@@ -1,18 +1,19 @@
-import React, { useEffect } from "react";
+import React, { useEffect } from 'react';
 
-import Layout from "@components/Layout";
-import SEO from "@components/SEO";
-import HomeHero from "../sections/home/Home.Hero";
-import HomeDescription from "../sections/home/Home.Description";
-import HomeEnding from "../sections/home/Home.Ending";
+import Layout from '@components/Layout';
+import SEO from '@components/SEO';
+import HomeHero from '../sections/home/Home.Hero';
+import HomeDescription from '../sections/home/Home.Description';
+import HomeEnding from '../sections/home/Home.Ending';
+import SendGridSignUp from '@components/Marketing/send-grid-signup';
 
 function LandingPage() {
   useEffect(() => {
     const event = listenForCKeyPress;
     window.addEventListener('keydown', event);
     return () => window.removeEventListener('keydown', event);
-  })
-  
+  });
+
   return (
     <Layout>
       <SEO
@@ -20,9 +21,10 @@ function LandingPage() {
         description="UOSC, empowering any student with a passion for software to achieve more. We will help you take your software development skills to the next level, and land that dream internship."
         pathname="/"
       />
-      <HomeHero/>
+      <HomeHero />
       <HomeDescription />
       <HomeEnding />
+      <SendGridSignUp />
     </Layout>
   );
 }
@@ -32,8 +34,8 @@ const listenForCKeyPress = (event: KeyboardEvent) => {
     return;
   }
   if (event.key === 'c') {
-    window?.location.replace('mailto:uosoftwareclub@gmail.com')
+    window?.location.replace('mailto:uosoftwareclub@gmail.com');
   }
   // do something
-}
+};
 export default LandingPage;

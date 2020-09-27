@@ -13,6 +13,8 @@ import mediaqueries from '@styles/media';
 
 import animationData from '../../assets/teamwork.json';
 import { useThemeUI, useColorMode } from 'theme-ui';
+import Button from '@components/Button';
+import { Link } from 'gatsby';
 
 const HomeHero: React.FC = () => {
   const themeContext = useThemeUI();
@@ -21,11 +23,11 @@ const HomeHero: React.FC = () => {
   const theme: IColorTheme = themeContext.theme as any;
   const lottieOptions = {
     loop: true,
-    autoplay: true, 
+    autoplay: true,
     animationData: animationData,
     rendererSettings: {
-      preserveAspectRatio: 'xMidYMid slice'
-    }
+      preserveAspectRatio: 'xMidYMid slice',
+    },
   };
   return (
     <Section>
@@ -33,7 +35,8 @@ const HomeHero: React.FC = () => {
         <ContentContainer theme={theme}>
           <Transitions.CSS.FadeIn>
             <MainText theme={theme}>
-              UOSC, empowering any student with a passion for software to achieve more.
+              UOSC, empowering any student with a passion for software to
+              achieve more.
             </MainText>
             <SubText theme={theme}>
               We will help you take your software development skills to the next
@@ -44,7 +47,11 @@ const HomeHero: React.FC = () => {
               onClick={() => handleNavigatingToContact()}
               className="cta-desktop"
             >
-              Press <KeyChar theme={theme} className="key-char">C</KeyChar> anywhere to contact us
+              Press{' '}
+              <KeyChar theme={theme} className="key-char">
+                C
+              </KeyChar>{' '}
+              anywhere to contact us
             </CalltoAction>
             <span className="cta-mobile">
               <ArrowButton
@@ -53,13 +60,15 @@ const HomeHero: React.FC = () => {
                 color={theme.colors.primary}
               />
             </span>
+            <div className="cta-mobile signup-container">
+              <a href="https://cdn.forms-content.sg-form.com/79c9e9ca-0054-11eb-9de0-c6d99ab7a58a">
+                <Button text="Sign up for our Mailing list"></Button>
+              </a>
+            </div>
           </Transitions.CSS.FadeIn>
         </ContentContainer>
         <HeroImageContainer>
-          <Lottie 
-            options={lottieOptions}
-            isClickToPauseDisabled
-          />
+          <Lottie options={lottieOptions} isClickToPauseDisabled />
         </HeroImageContainer>
       </HeroContainer>
       <ScrollIndicator mode={isDark ? 'light' : 'dark'} />
@@ -75,7 +84,7 @@ const handleNavigatingToContact = () => {
     return;
   }
   window.location.replace('mailto:uosoftwareclub@gmail.com');
-}
+};
 
 const MainText = styled.p<IColorThemeProps>`
   font-size: 3rem;
@@ -127,7 +136,7 @@ const HeroContainer = styled.div`
   align-items: center;
   justify-content: space-between;
   padding: 110px 0;
-  
+
   ${media.phablet`
     height: calc(100vh - 180px);
     min-height: 100%;
@@ -153,6 +162,9 @@ const ContentContainer = styled.div<IColorThemeProps>`
   .cta-mobile {
     display: none;
     color: ${(p) => p.theme.colors.primary};
+  }
+  .signup-container {
+    margin-top: 32px;
   }
   &:hover {
     .cta-desktop {
@@ -183,7 +195,7 @@ const HeroImageContainer = styled.div`
   `}
 `;
 
-const CalltoActionArrow = ({color = 'white'}) => (
+const CalltoActionArrow = ({ color = 'white' }) => (
   <svg width="35" height="7" viewBox="0 0 35 7" version="1.1">
     <g fill="none">
       <g>
