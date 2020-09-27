@@ -55,6 +55,7 @@ const Beat = styled.div`
   }
   margin: 0 4px;
   display: inline-block;
+  width: 15px;
   -webkit-animation: beat .25s infinite alternate;
   -moz-animation: beat .25s infinite alternate;
   -ms-animation: beat .25s infinite alternate;
