@@ -58,9 +58,9 @@ const SignUpContainer = styled.div`
   border-top-right-radius: 4px;
   z-index: 100;
   top: 100px;
-  left: -600px;
-  height: 450px;
-  width: 600px;
+  left: -650px;
+  height: 500px;
+  width: 650px;
   padding: 20px;
   background: #fff;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04), 0 2px 4px rgba(0, 0, 0, 0.04),
