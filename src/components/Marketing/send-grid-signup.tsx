@@ -12,9 +12,11 @@ const SendGridSignUp = () => {
 
   return (
     <>
-      <SignUpButton onClick={() => setShow(true)}>
-        Sign up for Mailing List
-      </SignUpButton>
+      {!show && (
+        <SignUpButton onClick={() => setShow(true)}>
+          Sign up for Mailing List
+        </SignUpButton>
+      )}
       <SignUpContainer className={show ? 'show' : ''}>
         {show && (
           <HideButton onClick={() => setShow(false)}>
