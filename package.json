@@ -8,7 +8,8 @@
     "dev": "gatsby develop",
     "clean": "gatsby clean",
     "proxy": "netlify-cms-proxy-server",
-    "lint": "eslint src"
+    "lint": "eslint src",
+    "generate": "plop --plopfile internals/generators/index.js"
   },
   "dependencies": {
     "@emotion/core": "^10.0.14",
@@ -70,6 +71,7 @@
   },
   "devDependencies": {
     "@types/theme-ui": "^0.3.6",
+    "plop": "^2.7.4",
     "typescript": "^3.9.7"
   }
 }
