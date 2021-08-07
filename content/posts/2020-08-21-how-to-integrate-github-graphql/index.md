@@ -1,6 +1,6 @@
 ---
 title: How to use Github's GraphQL API with Express.js
-author: Yong Lin Wang, UOSC
+author: yonglinwang
 date: 2020-08-21
 hero: ./images/header.jpg
 excerpt: GitHub offers a powerful REST based API for developers to get data and integrate

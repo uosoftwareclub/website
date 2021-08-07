@@ -178,7 +178,7 @@ module.exports = async ({ actions: { createPage }, graphql }, themeOptions) => {
           .split(',')
           .map(a => a.trim().toLowerCase());
 
-        return allAuthors.some(a => a === author.name.toLowerCase());
+        return allAuthors.some(a => a === author.username.toLowerCase());
       });
     } catch (error) {
       throw new Error(`
@@ -228,8 +228,8 @@ module.exports = async ({ actions: { createPage }, graphql }, themeOptions) => {
 
     authors.forEach(author => {
       const articlesTheAuthorHasWritten = articlesThatArentSecret.filter(
-        article =>
-          article.author.toLowerCase().includes(author.name.toLowerCase()),
+        article => 
+          article.author.toLowerCase().includes(author.username.toLowerCase()),
       );
       const path = slugify(author.slug, authorsPath);
 

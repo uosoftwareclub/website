@@ -35,6 +35,7 @@ export interface IAuthor {
   authorsPage?: boolean;
   featured?: boolean;
   name: string;
+  username: string;
   slug: string;
   bio: string;
   avatar: {

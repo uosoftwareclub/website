@@ -1,6 +1,6 @@
 ---
 title: Keep grinding until someone notices you.
-author: David Hew-Wing, UOSC
+author: davidhewwing
 date: 2020-02-13
 hero: ./images/header.jpg
 excerpt: Looking for jobs this summer has been rough for me. I applied to over 200+ SWE Intern positions and am currently 0/4 when giving me an interview. In each case, it seems like I have done well in the white-boarding interviews, with developers actually saying I did an excellent job in the interview.
