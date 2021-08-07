@@ -15,12 +15,12 @@ module.exports = {
     {
       type: 'input',
       name: 'author',
-      message: 'Who will be the author of this story?',
+      message: 'Please provide the author\'s username for this story',
       validate: value => {
         if (/.+/.test(value)) {
           return true;
         }
-        return 'The story date is required';
+        return 'The story author is required';
       },
     },
     {

@@ -48,7 +48,7 @@ module.exports = ({ node, actions, getNode, createNodeId }, themeOptions) => {
   // ///////////////////////////////////////////////////////
 
   if (node.internal.type === `AuthorsYaml`) {
-    const slug = node.slug ? `/${node.slug}` : slugify(node.name);
+    const slug = node.slug ? `/${node.slug}` : slugify(node.username);
 
     const fieldData = {
       ...node,
