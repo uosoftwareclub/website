@@ -3,7 +3,7 @@ title: 'An internship at Riot Games'
 author: wuon
 date: 2021-08-31
 hero: ./images/cover.png
-excerpt: Lorem ipsum dolor sit amet, consectetur adipiscing elit
+excerpt: In this post, I will be going through my internship experience, providing insight and tips for students that are interested in Riot Games!
 ---
 
 Hello 👋
