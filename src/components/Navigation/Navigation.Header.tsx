@@ -5,7 +5,7 @@ import { useColorMode, useThemeUI, Divider } from "theme-ui";
 
 import Section from "@components/Section";
 import Logo from "@components/Logo";
-import CuteMenuButton from '@components/Button/Button.Menu';
+import MenuButton from '@components/Button/Button.Menu';
 
 import Icons from "@icons";
 import mediaqueries from "@styles/media";
@@ -19,9 +19,8 @@ import Desktop from "@components/Breakpoints/Breakpoint.Desktop";
 import Mobile from "@components/Breakpoints/Breakpoint.Mobile";
 
 const navLinks = [
-  { to: '/labs', text: 'Labs' },
   { to: '/stories', text: 'Stories' },
-  { to: '/contact', text: 'Contact' },
+  { to: '/leaderboard', text: 'Leaderboard' },
 ]
 
 const DarkModeToggle: React.FC<{}> = () => {
@@ -85,25 +84,6 @@ const SharePageButton: React.FC<{}> = () => {
     </IconWrapper>
   );
 };
-
-const MenuButton:React.FC<{opened: boolean, clickHandler: () => any}> = ({opened, clickHandler}) => {
-  return (
-    <>
-      <Desktop>
-        <CuteMenuButton 
-          state={opened ? 'open' : 'close'}
-          onClick={clickHandler}
-        />
-      </Desktop>
-      <Mobile>
-        <CuteMenuButton 
-          state={'closed'}
-          onClick={clickHandler}
-        />
-      </Mobile>
-    </>
-  )
-}
 
 const DesktopNavigationMenu = ({className}) => {
   return (
@@ -198,7 +178,7 @@ const NavigationHeader: React.FC<{showShareButton?: boolean}> = ({showShareButto
             </Desktop>
             <MenuButton
               opened={opened}
-              clickHandler={() => menuClickHandler()}
+              onClick={() => menuClickHandler()}
             />
             {showBackArrow ? (
               <button
@@ -342,6 +322,7 @@ const NavControls = styled.div`
   position: relative;
   display: flex;
   align-items: center;
+  height: 36px;
 
   ${mediaqueries.phablet`
     right: -5px;

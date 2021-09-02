@@ -59,12 +59,11 @@ const DescriptionContainer = styled.div`
   max-width: 100%;
   position: relative;
   display: grid;
-  grid-template-columns: 144px 670px;
+  grid-template-columns: 25% 75%;
   z-index: 2;
   margin: 0px auto;
-  padding: 100px 4rem 30px;
+  padding: 64px 0;
   background: transparent;
-  grid-column-gap: 128px;
   p {
     margin-bottom: 60px;
   }
