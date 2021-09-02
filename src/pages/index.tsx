@@ -5,7 +5,6 @@ import SEO from '@components/SEO';
 import HomeHero from '../sections/home/Home.Hero';
 import HomeDescription from '../sections/home/Home.Description';
 import HomeEnding from '../sections/home/Home.Ending';
-import SendGridSignUp from '@components/Marketing/send-grid-signup';
 
 function LandingPage() {
   useEffect(() => {
@@ -24,7 +23,6 @@ function LandingPage() {
       <HomeHero />
       <HomeDescription />
       <HomeEnding />
-      <SendGridSignUp />
     </Layout>
   );
 }

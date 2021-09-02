@@ -17,17 +17,19 @@ import DigitalOcean from './social/DigitalOcean.Icon';
 import TripAdvisor from './social/TripAdvisor.Icon';
 
 // UI
+import Bars from './ui/Bars.Icon';
 import ChevronLeft from './ui/ChevronLeft.Icon';
 import Copied from './ui/Copied.Icon';
 import Copy from './ui/Copy.Icon';
 import Ex from './ui/Ex.Icon';
-import ExternalLink from './ui/ExternalLink.Icon';
+import ExternalLink from './ui/ExternalLink.Icon'; 
 import Link from './ui/Link.Icon';
 import Medal from './ui/Medal.Icon';
 import ToggleOpen from './ui/ToggleOpen.Icon';
 import ToggleClose from './ui/ToggleClose.Icon';
 import Rows from './ui/Rows.Icon';
 import Tiles from './ui/Tiles.Icon';
+import Times from './ui/Times.Icon';
 
 export default {
   Behance,
@@ -47,6 +49,7 @@ export default {
   DigitalOcean,
   TripAdvisor,
 
+  Bars,
   ChevronLeft,
   Copied,
   Copy,
@@ -58,4 +61,5 @@ export default {
   ToggleOpen,
   Rows,
   Tiles,
+  Times
 };
