@@ -93,3 +93,18 @@ git push -u origin s/2021-08-07-contributing-to-uosc-stories
 ```
 
 Off to Github it goes! Now all you have to do is wait for a PR review from one of our members and once merged in, it will automatically be deployed!
+
+---
+
+### FAQ
+
+#### My story isn't showing up in /stories
+
+The `.cache` is probably interfering with gatsby rebuilding. Try running the following commands:
+
+```bash
+npm run clean
+npm run dev
+```
+
+The story should now (hopefully) show up!
