@@ -60,11 +60,6 @@ const HomeHero: React.FC = () => {
                 color={theme.colors.primary}
               />
             </span>
-            <div className="cta-mobile signup-container">
-              <a href="https://cdn.forms-content.sg-form.com/79c9e9ca-0054-11eb-9de0-c6d99ab7a58a">
-                <Button text="Sign up for our Mailing list"></Button>
-              </a>
-            </div>
           </Transitions.CSS.FadeIn>
         </ContentContainer>
         <HeroImageContainer>

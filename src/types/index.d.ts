@@ -64,7 +64,7 @@ export interface IArticle {
   date: string;
 }
 
-interface IArticleQuery {
+export interface IArticleQuery {
   edges: {
     node: IArticle;
   }[];

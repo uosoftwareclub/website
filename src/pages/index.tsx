@@ -4,6 +4,7 @@ import Layout from '@components/Layout';
 import SEO from '@components/SEO';
 import HomeHero from '../sections/home/Home.Hero';
 import HomeDescription from '../sections/home/Home.Description';
+import HomeFeaturedStory from '../sections/home/Home.FeaturedStory';
 import HomeEnding from '../sections/home/Home.Ending';
 
 function LandingPage() {
@@ -21,6 +22,7 @@ function LandingPage() {
         pathname="/"
       />
       <HomeHero />
+      <HomeFeaturedStory />
       <HomeDescription />
       <HomeEnding />
     </Layout>
